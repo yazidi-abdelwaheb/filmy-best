@@ -1,0 +1,29 @@
+<div class="container mt-4 card p-4">
+  <h2 class="fw-bold mb-4">Edit Category</h2>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Label</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="category.label"
+        name="title"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Image URL</label>
+      <input
+        type="url"
+        class="form-control"
+        [(ngModel)]="category.image"
+        name="image"
+      />
+    </div>
+
+    <button class="btn btn-success" [disabled]="f.invalid">Save</button>
+    <a routerLink="/admin/category" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>

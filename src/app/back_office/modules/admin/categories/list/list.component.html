@@ -1,0 +1,71 @@
+<div class="container mt-4">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold"> Catrgories List</h2>
+
+    <button class="btn btn-primary" (click)="onAdd()">
+      <i class="bi bi-plus-lg"></i> Add Category
+    </button>
+  </div>
+
+  <!-- SEARCH / FILTER / SORT -->
+  <div class="row mb-4 g-3">
+
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by label..."
+        [(ngModel)]="searchText"
+        (input)="onSearch()"
+      />
+    </div>
+  </div>
+
+  <!-- FILMS TABLE -->
+  <table class="table table-hover align-middle shadow-sm rounded overflow-hidden">
+
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Label</th>
+        <th style="width: 150px;">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let f of filteredcategories; let i = index">
+
+        <td>{{ i + 1 }}</td>
+
+        <td>
+          <img [src]="f.image" class="poster-img" alt="poster">
+        </td>
+
+        <td>{{ f.label }}</td>
+        <td>
+          <!-- EDIT -->
+          <button
+            class="btn btn-sm btn-outline-warning me-1"
+            (click)="onEdit(f.id)"
+            title="Edit">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+
+          <!-- DELETE -->
+          <button
+            class="btn btn-sm btn-outline-danger"
+            (click)="onDelete(f.id)"
+            title="Delete">
+            <i class="bi bi-trash"></i>
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

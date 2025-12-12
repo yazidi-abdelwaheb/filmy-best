@@ -1,0 +1,25 @@
+.stat-card {
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card i {
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  opacity: 0.2;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.card-header h5 {
+  font-weight: 600;
+}
+
+.btn i {
+  font-size: 1rem;
+}

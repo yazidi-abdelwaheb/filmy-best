@@ -1,0 +1,106 @@
+<div class="container mt-4">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">Films List</h2>
+
+    <button class="btn btn-primary" (click)="onAdd()">
+      <i class="bi bi-plus-lg"></i> Add Film
+    </button>
+  </div>
+
+  <!-- SEARCH / FILTER / SORT -->
+  <div class="row mb-4 g-3">
+
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title..."
+        [(ngModel)]="searchText"
+        (input)="filterFilms()"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="selectedCategory" (change)="filterFilms()">
+        <option value="">All Categories</option>
+        <option *ngFor="let c of categories" [value]="c.id">{{ c.label }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="sortBy" (change)="sortFilms()">
+        <option value="title">Sort by Title</option>
+        <option value="rating">Sort by Rating</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- FILMS TABLE -->
+  <table class="table table-hover align-middle shadow-sm rounded overflow-hidden">
+
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Poster</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Rating</th>
+        <th style="width: 150px;">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let f of filteredFilms; let i = index">
+
+        <td>{{ i + 1 }}</td>
+
+        <td>
+          <img [src]="f.image" class="poster-img" alt="poster">
+        </td>
+
+        <td>{{ f.title }}</td>
+
+        <td>
+          <span class="badge bg-primary">{{ f.category }}</span>
+        </td>
+
+        <td>
+          ⭐ {{ f.rating }}/10
+        </td>
+
+        <td>
+
+          <!-- SHOW -->
+          <button
+            class="btn btn-sm btn-outline-info me-1"
+            (click)="onShow(f.id)"
+            title="Show">
+            <i class="bi bi-eye"></i>
+          </button>
+
+          <!-- EDIT -->
+          <button
+            class="btn btn-sm btn-outline-warning me-1"
+            (click)="onEdit(f.id)"
+            title="Edit">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+
+          <!-- DELETE -->
+          <button
+            class="btn btn-sm btn-outline-danger"
+            (click)="onDelete(f.id)"
+            title="Delete">
+            <i class="bi bi-trash"></i>
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

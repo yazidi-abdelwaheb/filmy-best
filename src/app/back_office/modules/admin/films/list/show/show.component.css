@@ -1,0 +1,53 @@
+.film-card {
+  background: #ffffff;
+  border-radius: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+.film-image {
+  border-radius: 20px;
+  object-fit: cover;
+  height: 350px;
+  width: 100%;
+}
+
+.film-title {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.category {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.film-description {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+.info-list p {
+  margin: 6px 0;
+  font-size: 1.05rem;
+}
+
+.btn-warning {
+  font-weight: 600;
+}
+
+.btn-outline-secondary {
+  font-weight: 500;
+}
+
+/* Animation soft */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
