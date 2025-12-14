@@ -2,46 +2,90 @@
   <h2 class="fw-bold mb-4">Add New Film</h2>
 
   <form #f="ngForm" (ngSubmit)="onSubmit()">
-
     <div class="mb-3">
       <label class="form-label">Title</label>
-      <input type="text" class="form-control" required [(ngModel)]="film.title" name="title">
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="film.title"
+        name="title"
+        required
+      />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Category</label>
-      <input type="text" class="form-control" required [(ngModel)]="film.category" name="category">
+      <label class="form-label">Categories</label>
+      <select
+        name="categories"
+        class="form-select"
+        [(ngModel)]="selectedCategory"
+        (change)="onSelectCategories($event)"
+        required
+      >
+        <option value="" selected>Choix Categories of this film</option>
+        @for(item of categories ; track item.id){
+        <option
+          [value]="item.id"
+          [disabled]="isCategorySelected(item.id)"
+        >
+          {{ item.label }}
+        </option>
+        }
+      </select>
+
+      <ul class="list-group list-group-horizontal mt-1 w-25">
+        @for(item of film.categories ; track item.id){
+        <li class="list-group-item list-group-item-action list-group-item-primary" (click)="deleteCategoriesSelected(item.id)" style="cursor: pointer;">{{ item.label }}</li>
+        }
+      </ul>
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Producer</label>
-      <input type="text" class="form-control" required [(ngModel)]="film.Producer" name="Producer">
+      <label class="form-label">Duration (Minutes)</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="film.duration"
+        name="duration"
+        min="5"
+        required
+      />
     </div>
-
-    <div class="mb-3">
-      <label class="form-label">Hero</label>
-      <input type="text" class="form-control" [(ngModel)]="film.hero" name="hero">
-    </div>
-
     <div class="mb-3">
       <label class="form-label">Image URL</label>
-      <input type="url" class="form-control" [(ngModel)]="film.image" name="image">
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Hero Image URL</label>
-      <input type="url" class="form-control" [(ngModel)]="film.imageHero" name="imageHero">
+      <input
+        type="url"
+        class="form-control"
+        [(ngModel)]="film.image"
+        name="image"
+        required
+      />
     </div>
 
     <div class="mb-3">
       <label class="form-label">Description</label>
-      <textarea rows="4" class="form-control" required
-        [(ngModel)]="film.description" name="description"></textarea>
+      <textarea
+        rows="4"
+        class="form-control"
+        required
+        [(ngModel)]="film.description"
+        name="description"
+        required
+      ></textarea>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Rating</label>
-      <input type="number" class="form-control" min="1" max="10" [(ngModel)]="film.rating" name="rating">
+      <input
+        type="number"
+        class="form-control"
+        min="1"
+        max="10"
+        [(ngModel)]="film.rating"
+        name="rating"
+        required
+      />
     </div>
 
     <button class="btn btn-success" [disabled]="f.invalid">Save</button>

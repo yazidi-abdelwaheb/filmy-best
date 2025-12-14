@@ -1,14 +1,14 @@
-import Category from "./category.model";
+import { BaseFilmSerie } from "./baseFilmSerie.model";
+export class Serie extends BaseFilmSerie {
+  episodeNbr !: number;
+  episodes !: Episode[];
+}
 
-export class Serie {
-  id!: string;
-  title!: string;
-  category!: Category | string;
-  description!: string;
-  Producer !: string;
-  hero !:string;
-  imageHero!:string;
-  image!: string;
-  rating!: number;
-  sessionNbr!:number;
+
+export class Episode {
+  id!:string;
+  image!:string;
+  index!:number;
+  rating!:number;
+
 }

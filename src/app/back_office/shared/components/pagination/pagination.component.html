@@ -1,0 +1,43 @@
+<div
+  class="d-flex justify-content-between align-items-center flex-wrap mt-3 p-2 border rounded bg-light shadow-sm"
+>
+
+  <!-- LIMIT -->
+  <div class="d-flex align-items-center gap-2">
+    <label class="fw-bold mb-0 text-secondary">Display :</label>
+
+    <select
+      class="form-select form-select-sm w-auto"
+      [(ngModel)]="limit"
+      (change)="onLimitChange()"
+    >
+      @for (l of limits; track $index) {
+        <option [value]="l">{{ l }}</option>
+      }
+    </select>
+
+    <span class="text-muted"> per page</span>
+  </div>
+
+  <!-- PAGE INFO -->
+  <div class="text-muted">
+    Page <strong>{{ page }}</strong>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <ul class="pagination pagination-sm mb-0">
+      <li class="page-item" [class.disabled]="page === 1">
+        <button class="page-link" (click)="previousPage()">
+          <i class="bi bi-arrow-left-square-fill"></i> Previous
+        </button>
+      </li>
+
+      <li class="page-item" [class.disabled]="!hasNext">
+        <button class="page-link" (click)="nextPage()">
+          Next <i class="bi bi-arrow-right-square-fill"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

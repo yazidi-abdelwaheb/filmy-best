@@ -23,16 +23,13 @@
 
         <div class="detail-row mb-2">
           <strong>Category :</strong>
-          <span class="ms-2 category">{{ film.category }}</span>
+          <span class="ms-2 category">{{ film.categories }}</span>
         </div>
 
         <p class="film-description mt-3">{{ film.description }}</p>
 
         <div class="info-list mt-3">
           <p><i class="bi bi-star-fill text-warning"></i> <strong>Rating:</strong> {{ film.rating }}/10</p>
-          <p><i class="bi bi-camera-reels"></i> <strong>Producer:</strong> {{ film.Producer }}</p>
-          <p><i class="bi bi-person-fill"></i> <strong>Main Actor:</strong> {{ film.hero }}</p>
-          <img [src]="film.imageHero" alt="">
         </div>
 
         <div class="mt-4">

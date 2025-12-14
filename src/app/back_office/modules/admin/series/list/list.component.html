@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-md-3">
-      <select class="form-select" [(ngModel)]="sortBy" (change)="sortFilms()">
+      <select class="form-select" [(ngModel)]="sortBy" (change)="sort()">
         <option value="title">Sort by Title</option>
         <option value="rating">Sort by Rating</option>
       </select>
@@ -53,7 +53,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let f of filteredFilms; let i = index">
+      <tr *ngFor="let f of filteredseries; let i = index">
 
         <td>{{ i + 1 }}</td>
 
@@ -64,7 +64,9 @@
         <td>{{ f.title }}</td>
 
         <td>
-          <span class="badge bg-primary">{{ f.category }}</span>
+           @for(c of f.categories; track c.id){
+            <span class="badge bg-primary">{{ c.label }}</span>
+          }
         </td>
 
         <td>

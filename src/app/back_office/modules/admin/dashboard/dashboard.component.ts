@@ -23,20 +23,17 @@ films: Film[] = [];
 
   ngOnInit(): void {
     this.loadFilms();
-    this.loadCategory()
+    //this.loadCategory()
   }
 
   loadFilms() {
-    this.fs.list().subscribe((data) => {
-      this.films = data;
-      this.totalFilms = data.length;
-    });
+   this.totalFilms = this.fs.getTotal()
   }
 
-  loadCategory() {
+  /*loadCategory() {
     this.cs.list().subscribe((data) => {
       this.categories = data;
       this.totalCategories = data.length;
     });
-  }
+  }*/
 }

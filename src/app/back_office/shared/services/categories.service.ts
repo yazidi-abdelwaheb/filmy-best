@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import environemnt from '../../../environemnts/environemnt.prod';
@@ -12,8 +12,17 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) {}
 
- list(): Observable<Category[]> {
+  all(): Observable<Category[]> {
     return this.http.get<Category[]>(this.apiUrl);
+  }
+  list(page: number, limit: number, label?: string): Observable<Category[]> {
+    let params = new HttpParams().set('_page', page).set('_limit', limit);
+
+    if (label) {
+      params = params.set('label_like', label);
+    }
+
+    return this.http.get<Category[]>(this.apiUrl, { params });
   }
 
   getOne(id: string): Observable<Category> {

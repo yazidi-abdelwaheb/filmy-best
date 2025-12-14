@@ -1,0 +1,19 @@
+<div class="d-flex align-items-center">
+  <span class="fw-bold text-primary w-25">{{ rating }}/{{ max }}</span>
+  <div>
+@for (star of stars; track $index; let i = $index) {
+  <i
+    class="bi"
+    [ngClass]="{
+      'bi-star-fill': i < fullStars,
+      'bi-star-half': i === fullStars && hasHalfStar,
+      'bi-star': i > fullStars || (i === fullStars && !hasHalfStar),
+      'text-warning': i < fullStars || (i === fullStars && hasHalfStar),
+      'text-secondary': i > fullStars || (i === fullStars && !hasHalfStar)
+    }"
+  >
+  </i>
+
+  }
+  </div>
+</div>

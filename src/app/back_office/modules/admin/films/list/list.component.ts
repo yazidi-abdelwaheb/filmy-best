@@ -1,83 +1,127 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Film } from '../../../../shared/models/film.model';
 import { FilmsService } from '../../../../shared/services/films.service';
 import { Router } from '@angular/router';
-import { NgFor, SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CategoriesService } from '../../../../shared/services/categories.service';
 import Category from '../../../../shared/models/category.model';
+import { StarRatingComponent } from '../../../../shared/components/star-rating/star-rating.component';
+import { DurationPipe } from '../../../../shared/pipes/duration.pipe';
+import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 
 @Component({
   selector: 'app-list',
-  imports: [NgFor, FormsModule],
+  imports: [
+    FormsModule,
+    StarRatingComponent,
+    DurationPipe,
+    PaginationComponent,
+  ],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
+  styleUrls: ['./list.component.css'],
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
   films: Film[] = [];
-  filteredFilms: Film[] = [];
+
+  page = 1;
+  limit = 5;
+  hasNext = false;
 
   searchText = '';
   selectedCategory = '';
-  sortBy = 'title';
+
+  sortBy: 'title' | 'rating' = 'title';
+  sortOrder: 'asc' | 'desc' = 'asc';
 
   categories: Category[] = [];
 
-  constructor(private filmService: FilmsService, private route: Router , private categoryService : CategoriesService) {}
+  constructor(
+    private filmService: FilmsService,
+    private router: Router,
+    private categoryService: CategoriesService
+  ) {}
 
   ngOnInit(): void {
-    this.filmService.list().subscribe((data) => {
-      this.films = data;
-      this.filteredFilms = [...this.films];
-    });
-
-    this.categoryService.list().subscribe((data)=>this.categories = data)
-
+    this.loadData();
+    this.categoryService.all().subscribe((data) => (this.categories = data));
   }
 
-  filterFilms() {
-    this.filteredFilms = this.films.filter((f) =>
-      f.title.toLowerCase().includes(this.searchText.toLowerCase())
-    );
-
-    if (this.selectedCategory !== '') {
-      this.filteredFilms = this.filteredFilms.filter(
-        (f) => f.category.id === this.selectedCategory
-      );
-    }
-
-    this.sortFilms();
+  loadData() {
+    console.log(this.selectedCategory)
+    this.filmService
+      .list(
+        this.page,
+        this.limit,
+        this.selectedCategory,
+        this.searchText,
+        /*this.sortBy,
+        this.sortOrder*/
+      )
+      .subscribe((data) => {
+        this.films = data;
+        this.hasNext = data.length === this.limit;
+      });
   }
 
-  sortFilms() {
-    if (this.sortBy === 'title') {
-      this.filteredFilms.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (this.sortBy === 'rating') {
-      this.filteredFilms.sort((a, b) => b.rating - a.rating);
-    }
+  onPageChange(page: number) {
+    this.page = page;
+    this.loadData();
   }
 
+  onLimitChange(limit: number) {
+    this.limit = limit;
+    this.page = 1;
+    this.loadData();
+  }
+
+  onSearch() {
+    this.page = 1;
+    this.loadData();
+  }
+
+  onSortChange() {
+    this.page = 1;
+    this.loadData();
+  }
+
+  onFilter(){
+    this.page = 1;
+    this.loadData();
+  }
+
+  /** Navigation */
   onShow(id: string) {
-    this.route.navigate([`/admin/film/${id.toString()}`]);
-    // navigate to /films/:id
+    this.router.navigate(['/admin/film', id]);
   }
 
   onEdit(id: string) {
-    this.route.navigate([`/admin/film/${id.toString()}/edit`]);
-    // navigate to /films/edit/:id
+    this.router.navigate(['/admin/film', id, 'edit']);
   }
 
   onAdd() {
-    this.route.navigate([`/admin/film/add`]);
-    // navigate to /films/add
+    this.router.navigate(['/admin/film/add']);
   }
 
   onDelete(id: string) {
-    if (confirm('Are you sure you want to delete this film?')) {
-      this.filmService.deleteOne(id).subscribe(() => {
-        this.films = this.films.filter((f) => f.id !== id);
-        this.filterFilms();
-      });
-    }
+    if (!confirm('Êtes-vous sûr ?')) return;
+
+    this.filmService.deleteOne(id).subscribe(() => {
+      if (this.films.length === 1 && this.page > 1) {
+        this.page--;
+      }
+      this.loadData();
+    });
+  }
+
+  onReload(){
+    this.page = 1
+    this.limit = 5
+    this.searchText =""
+    this.selectedCategory = ""
+    this.loadData()
+  }
+
+  getIndex(i: number): number {
+    return (this.page - 1) * this.limit + i + 1;
   }
 }

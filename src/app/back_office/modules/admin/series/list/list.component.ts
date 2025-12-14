@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Film } from '../../../../shared/models/film.model';
-import { FilmsService } from '../../../../shared/services/films.service';
 import { Router } from '@angular/router';
 import { NgFor, SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CategoriesService } from '../../../../shared/services/categories.service';
 import Category from '../../../../shared/models/category.model';
+import { SeriesService } from '../../../../shared/services/series.service';
+import { Serie } from '../../../../shared/models/serie.model';
 
 @Component({
   selector: 'app-list',
@@ -14,8 +14,8 @@ import Category from '../../../../shared/models/category.model';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
-  films: Film[] = [];
-  filteredFilms: Film[] = [];
+  series: Serie[] = [];
+  filteredseries: Serie[] = [];
 
   searchText = '';
   selectedCategory = '';
@@ -23,59 +23,56 @@ export class ListComponent {
 
   categories: Category[] = [];
 
-  constructor(private filmService: FilmsService, private route: Router , private categoryService : CategoriesService) {}
+  constructor(private serieService: SeriesService, private route: Router , private categoryService : CategoriesService) {}
 
   ngOnInit(): void {
-    this.filmService.list().subscribe((data) => {
-      this.films = data;
-      this.filteredFilms = [...this.films];
+    this.serieService.list().subscribe((data) => {
+      this.series = data;
+      this.filteredseries = [...this.series];
     });
 
-    this.categoryService.list().subscribe((data)=>this.categories = data)
+    this.categoryService.all().subscribe((data)=>this.categories = data)
 
   }
 
   filterFilms() {
-    this.filteredFilms = this.films.filter((f) =>
+    this.filteredseries = this.series.filter((f) =>
       f.title.toLowerCase().includes(this.searchText.toLowerCase())
     );
 
     if (this.selectedCategory !== '') {
-      this.filteredFilms = this.filteredFilms.filter(
-        (f) => f.category.id === this.selectedCategory
+      this.filteredseries = this.filteredseries.filter(
+        (f) => f.categories.filter(c=>c.id === this.selectedCategory)
       );
     }
 
-    this.sortFilms();
+    this.sort();
   }
 
-  sortFilms() {
+  sort() {
     if (this.sortBy === 'title') {
-      this.filteredFilms.sort((a, b) => a.title.localeCompare(b.title));
+      this.filteredseries.sort((a, b) => a.title.localeCompare(b.title));
     } else if (this.sortBy === 'rating') {
-      this.filteredFilms.sort((a, b) => b.rating - a.rating);
+      this.filteredseries.sort((a, b) => b.rating - a.rating);
     }
   }
 
   onShow(id: string) {
-    this.route.navigate([`/admin/film/${id.toString()}`]);
-    // navigate to /films/:id
+    this.route.navigate([`/admin/series/${id.toString()}`]);
   }
 
   onEdit(id: string) {
-    this.route.navigate([`/admin/film/${id.toString()}/edit`]);
-    // navigate to /films/edit/:id
+    this.route.navigate([`/admin/series/${id.toString()}/edit`]);
   }
 
   onAdd() {
-    this.route.navigate([`/admin/film/add`]);
-    // navigate to /films/add
+    this.route.navigate([`/admin/series/add`]);
   }
 
   onDelete(id: string) {
     if (confirm('Are you sure you want to delete this film?')) {
-      this.filmService.deleteOne(id).subscribe(() => {
-        this.films = this.films.filter((f) => f.id !== id);
+      this.serieService.deleteOne(id).subscribe(() => {
+        this.series = this.series.filter((f) => f.id !== id);
         this.filterFilms();
       });
     }

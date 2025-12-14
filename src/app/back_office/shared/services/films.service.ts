@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Film } from '../models/film.model';
 import environemnt from '../../../environemnts/environemnt.prod';
 
@@ -11,9 +11,31 @@ export class FilmsService {
   private apiUrl = `${environemnt.apiUrl}/films`;
 
   constructor(private http: HttpClient) {}
+  private total!: number;
 
- list(): Observable<Film[]> {
-    return this.http.get<Film[]>(`${this.apiUrl}`);
+  getTotal(): number {
+    return this.total;
+  }
+
+  list(
+    page: number,
+    limit: number,
+    categoryId?: string,
+    title?: string
+  ): Observable<Film[]> {
+    let params = new HttpParams().set('_page', page).set('_limit', limit);
+
+    if (title) {
+      params = params.set('title_like', title);
+    }
+
+    if (categoryId) {
+      params = params.set('categories[0].id', categoryId);
+    }
+
+    console.log(params)
+
+    return this.http.get<Film[]>(this.apiUrl, { params });
   }
 
   getOne(id: string): Observable<Film> {
