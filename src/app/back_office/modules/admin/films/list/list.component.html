@@ -9,57 +9,12 @@
     </button>
   </div>
 
-<div class="card shadow-sm mb-4">
-  <div class="card-body">
-    <div class="row g-3 align-items-center">
-
-      <div class="col-md-4">
-        <div class="input-group">
-          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search by title..."
-            [(ngModel)]="searchText"
-            (input)="onSearch()"
-          />
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <select
-          class="form-select"
-          [(ngModel)]="selectedCategory"
-          (change)="onFilter()"
-        >
-          <option value="">All Categories</option>
-          @for (c of categories; track c.id) {
-          <option [value]="c.id">{{ c.label }}</option>
-          }
-        </select>
-      </div>
-
-      <div class="col-md-3">
-        <select
-          class="form-select"
-          [(ngModel)]="sortBy"
-          (change)="onSortChange()"
-        >
-          <option value="title">Sort by Title</option>
-          <option value="rating">Sort by Rating</option>
-        </select>
-      </div>
-
-      <div class="col-md-2 d-flex justify-content-end">
-        <button class="btn btn-outline-secondary d-flex align-items-center" (click)="onReload()">
-          <i class="bi bi-arrow-clockwise me-1"></i> Reload
-        </button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
+  <app-search-filter
+    [page]="page"
+    [limit]="limit"
+    [sortChoix]="['Title', 'rating', 'Duration']"
+    (loadData)="loadData($event)"
+  />
 
   <!-- FILMS TABLE -->
 

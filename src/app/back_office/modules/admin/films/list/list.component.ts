@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Film } from '../../../../shared/models/film.model';
 import { FilmsService } from '../../../../shared/services/films.service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { CategoriesService } from '../../../../shared/services/categories.service';
 import Category from '../../../../shared/models/category.model';
 import { StarRatingComponent } from '../../../../shared/components/star-rating/star-rating.component';
 import { DurationPipe } from '../../../../shared/pipes/duration.pipe';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
+import { SearchFilterComponent } from '../../../../shared/components/search-filter/search-filter.component';
 
 @Component({
   selector: 'app-list',
   imports: [
-    FormsModule,
     StarRatingComponent,
     DurationPipe,
     PaginationComponent,
+    SearchFilterComponent,
   ],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
@@ -46,16 +46,29 @@ export class ListComponent implements OnInit {
     this.categoryService.all().subscribe((data) => (this.categories = data));
   }
 
-  loadData() {
-    console.log(this.selectedCategory)
+  // Méthode loadData adaptée pour recevoir un objet
+  loadData(params?: { search?: string; filterCategory?: string }) {
+    if (params?.search !== undefined) {
+      this.searchText = params.search;
+    }
+    if (params?.filterCategory !== undefined) {
+      this.selectedCategory = params.filterCategory;
+    }
+
+    console.log(
+      'searchText:',
+      this.searchText,
+      'selectedCategory:',
+      this.selectedCategory
+    );
+
     this.filmService
       .list(
         this.page,
         this.limit,
         this.selectedCategory,
-        this.searchText,
-        /*this.sortBy,
-        this.sortOrder*/
+        this.searchText
+        // this.sortBy, this.sortOrder
       )
       .subscribe((data) => {
         this.films = data;
@@ -84,7 +97,7 @@ export class ListComponent implements OnInit {
     this.loadData();
   }
 
-  onFilter(){
+  onFilter() {
     this.page = 1;
     this.loadData();
   }
@@ -113,12 +126,12 @@ export class ListComponent implements OnInit {
     });
   }
 
-  onReload(){
-    this.page = 1
-    this.limit = 5
-    this.searchText =""
-    this.selectedCategory = ""
-    this.loadData()
+  onReload() {
+    this.page = 1;
+    this.limit = 5;
+    this.searchText = '';
+    this.selectedCategory = '';
+    this.loadData();
   }
 
   getIndex(i: number): number {
