@@ -21,9 +21,11 @@ export class FilmsService {
     page: number,
     limit: number,
     categoryId?: string,
-    title?: string
+    title?: string,
+    sortBy?: string,
+    orderSort?: 'asc' | 'desc'
   ): Observable<Film[]> {
-    let params = new HttpParams().set('_page', page).set('_limit', limit);
+    let params = new HttpParams();
 
     if (title) {
       params = params.set('title_like', title);
@@ -33,7 +35,14 @@ export class FilmsService {
       params = params.set('categories[0].id', categoryId);
     }
 
-    console.log(params)
+    const sort = sortBy ? sortBy : 'title';
+    const order = orderSort ? orderSort : 'asc';
+
+    params = params.set('_sort', sort);
+    params = params.set('_order', order);
+
+    params = params.set('_page', page);
+    params = params.set('_limit', limit);
 
     return this.http.get<Film[]>(this.apiUrl, { params });
   }

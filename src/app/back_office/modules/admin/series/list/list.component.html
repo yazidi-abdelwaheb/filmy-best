@@ -1,108 +1,95 @@
 <div class="container mt-4">
-
-  <!-- HEADER -->
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="fw-bold">Films List</h2>
+    <h2 class="fw-bold"><i class="bi bi-collection-play me-2"></i> Series List</h2>
 
     <button class="btn btn-primary" (click)="onAdd()">
-      <i class="bi bi-plus-lg"></i> Add Film
+      <i class="bi bi-plus-lg"></i> Add Serie
     </button>
   </div>
+   <app-search-filter
+    [sortChoix]="['title', 'rating', 'duration']"
+    (loadData)="loadData($event)"
+    (initPage)="initPageTo1()"
+  />
 
-  <!-- SEARCH / FILTER / SORT -->
-  <div class="row mb-4 g-3">
-
-    <div class="col-md-4">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search by title..."
-        [(ngModel)]="searchText"
-        (input)="filterFilms()"
-      />
-    </div>
-
-    <div class="col-md-3">
-      <select class="form-select" [(ngModel)]="selectedCategory" (change)="filterFilms()">
-        <option value="">All Categories</option>
-        <option *ngFor="let c of categories" [value]="c.id">{{ c.label }}</option>
-      </select>
-    </div>
-
-    <div class="col-md-3">
-      <select class="form-select" [(ngModel)]="sortBy" (change)="sort()">
-        <option value="title">Sort by Title</option>
-        <option value="rating">Sort by Rating</option>
-      </select>
-    </div>
-
+  <div class="table-responsive shadow-sm rounded table-scroll">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Poster</th>
+          <th>Title</th>
+          <th>Categories</th>
+          <th>Number of episodes</th>
+          <th>Rating</th>
+          <th style="width: 180px">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(f of series ; track f.id; let i =$index){
+        <tr>
+          <td>{{ getIndex(i) }}</td>
+          <td>
+            <img
+              [src]="f.image"
+              class="rounded shadow-sm"
+              alt="poster"
+              width="120"
+              height="80"
+              style="object-fit: cover"
+            />
+          </td>
+          <td class="fw-bold">{{ f.title }}</td>
+          <td>
+            @for(c of f.categories; track c.id){
+            <span class="badge bg-primary me-1">{{ c.label }}</span>
+            }
+          </td>
+          <td>{{ f.episodeNbr  }}</td>
+          <td><app-star-rating [rating]="f.rating"></app-star-rating></td>
+          <td>
+            <div class="btn-group" role="group">
+              <button
+                class="btn btn-sm btn-outline-info"
+                (click)="onShow(f.id)"
+                title="Show"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+              <button
+                class="btn btn-sm btn-outline-warning"
+                (click)="onEdit(f.id)"
+                title="Edit"
+              >
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button
+                class="btn btn-sm btn-outline-danger"
+                (click)="onDelete(f.id)"
+                title="Delete"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        }@empty {
+        <div class="alert alert-info d-flex align-items-center gap-2 mt-2">
+          <i class="bi bi-info-circle"></i>
+          <span>No data was selected from the database.</span>
+        </div>
+        }
+      </tbody>
+    </table>
   </div>
-
-  <!-- FILMS TABLE -->
-  <table class="table table-hover align-middle shadow-sm rounded overflow-hidden">
-
-    <thead class="table-dark">
-      <tr>
-        <th>#</th>
-        <th>Poster</th>
-        <th>Title</th>
-        <th>Category</th>
-        <th>Rating</th>
-        <th style="width: 150px;">Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let f of filteredseries; let i = index">
-
-        <td>{{ i + 1 }}</td>
-
-        <td>
-          <img [src]="f.image" class="poster-img" alt="poster">
-        </td>
-
-        <td>{{ f.title }}</td>
-
-        <td>
-           @for(c of f.categories; track c.id){
-            <span class="badge bg-primary">{{ c.label }}</span>
-          }
-        </td>
-
-        <td>
-          ⭐ {{ f.rating }}/10
-        </td>
-
-        <td>
-
-          <!-- SHOW -->
-          <button
-            class="btn btn-sm btn-outline-info me-1"
-            (click)="onShow(f.id)"
-            title="Show">
-            <i class="bi bi-eye"></i>
-          </button>
-
-          <!-- EDIT -->
-          <button
-            class="btn btn-sm btn-outline-warning me-1"
-            (click)="onEdit(f.id)"
-            title="Edit">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-
-          <!-- DELETE -->
-          <button
-            class="btn btn-sm btn-outline-danger"
-            (click)="onDelete(f.id)"
-            title="Delete">
-            <i class="bi bi-trash"></i>
-          </button>
-
-        </td>
-      </tr>
-    </tbody>
-
-  </table>
-
+  <div class="card-footer bg-light mt-3">
+    <app-pagination
+      [page]="page"
+      [limit]="limit"
+      [hasNext]="hasNext"
+      (pageChange)="onPageChange($event)"
+      (limitChange)="onLimitChange($event)"
+    >
+    </app-pagination>
+  </div>
 </div>

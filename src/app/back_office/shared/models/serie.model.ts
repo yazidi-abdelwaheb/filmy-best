@@ -6,7 +6,7 @@ export class Serie extends BaseFilmSerie {
 
 
 export class Episode {
-  id!:string;
+  id?:string;
   image!:string;
   index!:number;
   rating!:number;

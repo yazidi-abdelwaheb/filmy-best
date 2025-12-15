@@ -2,39 +2,132 @@
   <h2 class="fw-bold mb-4">Edit Film</h2>
 
   <form #f="ngForm" (ngSubmit)="onSubmit()">
-
     <div class="mb-3">
       <label class="form-label">Title</label>
-      <input type="text" class="form-control" [(ngModel)]="film.title" name="title">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="film.title"
+        name="title"
+        required
+        #title="ngModel"
+      />
+      @if (title.invalid && title.touched) {
+      <div  class="text-danger">
+        Title is required
+      </div>
+      }
     </div>
 
-    <div class="mb-3">
-      <label class="form-label">Category</label>
-      <input type="text" class="form-control" [(ngModel)]="film.categories" name="category">
-    </div>
+   <div class="mb-3">
+      <label class="form-label fw-semibold">Categories</label>
 
-    
+      <select
+        name="category"
+        class="form-select"
+        [(ngModel)]="selectedCategory"
+        (change)="onSelectCategories()"
+        required
+        #category="ngModel"
+      >
+        <option value="">Add categories to this film</option>
+
+        @for (item of categories; track item.id) {
+        <option [value]="item.id" [disabled]="isCategorySelected(item.id)">
+          {{ item.label }}
+        </option>
+        }
+      </select>
+      @if (category.invalid && category.touched) {
+      <div class="text-danger">Category is required</div>
+      }
+
+      <ul class="list-group list-group-horizontal flex-wrap gap-2 mt-2">
+        @for (item of film.categories; track item.id) {
+        <li
+          class="list-group-item list-group-item-warning rounded-pill px-3 py-1"
+          (click)="deleteCategoriesSelected(item.id)"
+          style="cursor: pointer"
+        >
+          {{ item.label }}
+          <i class="bi bi-x ms-1"></i>
+        </li>
+        }
+      </ul>
+    </div>
 
     <div class="mb-3">
       <label class="form-label">Image URL</label>
-      <input type="url" class="form-control" [(ngModel)]="film.image" name="image">
+      <input
+        type="url"
+        class="form-control"
+        [(ngModel)]="film.image"
+        name="image"
+        required
+        #image="ngModel"
+      />
+      @if (image.invalid && image.touched) {
+      <div  class="text-danger">
+        Image is required.
+      </div>
+      }
     </div>
-
-   
 
     <div class="mb-3">
       <label class="form-label">Description</label>
-      <textarea rows="4" class="form-control"
-        [(ngModel)]="film.description" name="description"></textarea>
+      <textarea
+        rows="4"
+        class="form-control"
+        [(ngModel)]="film.description"
+        name="description"
+        required
+        #description="ngModel"
+      ></textarea>
+      @if (description.invalid && description.touched) {
+      <div  class="text-danger">
+        Description is required.
+      </div>
+      }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Rating</label>
-      <input type="number" min="1" max="10" class="form-control"
-        [(ngModel)]="film.rating" name="rating">
+      <input
+        type="number"
+        min="1"
+        max="10"
+        class="form-control"
+        [(ngModel)]="film.rating"
+        name="rating"
+        required
+        #rating="ngModel"
+      />
+      @if (rating.invalid && rating.touched) {
+      <div  class="text-danger">
+        Rating is required, min 1 and max 10.
+      </div>
+      }
     </div>
 
-    <button class="btn btn-warning px-3">Update</button>
+    <div class="mb-3">
+      <label class="form-label">Duration (Minutes)</label>
+      <input
+        type="number"
+        min="10"
+        class="form-control"
+        [(ngModel)]="film.duration"
+        name="duration"
+        required
+        #duration="ngModel"
+      />
+      @if (duration.invalid && duration.touched) {
+      <div  class="text-danger">
+        Duration is required and min is 10 minutes.
+      </div>
+      }
+    </div>
+
+    <button class="btn btn-warning px-3" [disabled]="f.invalid">Update</button>
     <a routerLink="/admin/film" class="btn btn-secondary ms-2 px-3">Cancel</a>
   </form>
 </div>

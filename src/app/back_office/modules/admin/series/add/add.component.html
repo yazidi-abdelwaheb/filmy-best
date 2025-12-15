@@ -1,39 +1,194 @@
 <div class="container mt-4 card p-4">
-  <h2 class="fw-bold mb-4">Add New Film</h2>
+  <h2 class="fw-bold mb-4">Add New Serie</h2>
 
   <form #f="ngForm" (ngSubmit)="onSubmit()">
-
     <div class="mb-3">
       <label class="form-label">Title</label>
-      <input type="text" class="form-control" required [(ngModel)]="film.title" name="title">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="serie.title"
+        name="title"
+        required
+        #title="ngModel"
+      />
+      @if (title.invalid && title.touched) {
+      <div class="text-danger">Title is required</div>
+      }
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Category</label>
-      <input type="text" class="form-control" required [(ngModel)]="film.categories" name="category">
-    </div>
+      <label class="form-label fw-semibold">Categories</label>
 
-   
+      <select
+        name="category"
+        class="form-select"
+        [(ngModel)]="selectedCategory"
+        (change)="onSelectCategories()"
+        required
+        #category="ngModel"
+      >
+        <option value="">Add categories to this film</option>
+
+        @for (item of categories; track item.id) {
+        <option [value]="item.id" [disabled]="isCategorySelected(item.id)">
+          {{ item.label }}
+        </option>
+        }
+      </select>
+      @if (category.invalid && category.touched) {
+      <div class="text-danger">Category is required</div>
+      }
+
+      <ul class="list-group list-group-horizontal flex-wrap gap-2 mt-2">
+        @for (item of serie.categories; track item.id) {
+        <li
+          class="list-group-item list-group-item-warning rounded-pill px-3 py-1"
+          (click)="deleteCategoriesSelected(item.id)"
+          style="cursor: pointer"
+        >
+          {{ item.label }}
+          <i class="bi bi-x ms-1"></i>
+        </li>
+        }
+      </ul>
+    </div>
 
     <div class="mb-3">
       <label class="form-label">Image URL</label>
-      <input type="url" class="form-control" [(ngModel)]="film.image" name="image">
+      <input
+        type="url"
+        class="form-control"
+        [(ngModel)]="serie.image"
+        name="image"
+        required
+        #image="ngModel"
+      />
+      @if (image.invalid && image.touched) {
+      <div class="text-danger">Image is required.</div>
+      }
     </div>
-
-   
 
     <div class="mb-3">
       <label class="form-label">Description</label>
-      <textarea rows="4" class="form-control" required
-        [(ngModel)]="film.description" name="description"></textarea>
+      <textarea
+        rows="4"
+        class="form-control"
+        [(ngModel)]="serie.description"
+        name="description"
+        required
+        #description="ngModel"
+      ></textarea>
+      @if (description.invalid && description.touched) {
+      <div class="text-danger">Description is required.</div>
+      }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Rating</label>
-      <input type="number" class="form-control" min="1" max="10" [(ngModel)]="film.rating" name="rating">
+      <input
+        type="number"
+        min="1"
+        max="10"
+        class="form-control"
+        [(ngModel)]="serie.rating"
+        name="rating"
+        required
+        #rating="ngModel"
+      />
+      @if (rating.invalid && rating.touched) {
+      <div class="text-danger">Rating is required, min 1 and max 10.</div>
+      }
     </div>
 
-    <button class="btn btn-success" [disabled]="f.invalid">Save</button>
-    <a routerLink="/admin/film" class="btn btn-secondary ms-2">Cancel</a>
+    <div class="mb-3">
+      <label class="form-label">Number of episodes</label>
+      <input
+        type="number"
+        min="1"
+        class="form-control"
+        [(ngModel)]="serie.episodeNbr"
+        name="episodeNbr"
+        required
+        #episodeNbr="ngModel"
+        (ngModelChange)="onEpisodeNbrChange()"
+      />
+
+      @if (episodeNbr.invalid && episodeNbr.touched) {
+      <div class="text-danger">
+        Number of episodes is required and min is 1.
+      </div>
+      }
+    </div>
+
+    <div class="my-3">
+      @if (serie.episodeNbr > 0) {
+      <hr />
+      <h5 class="fw-bold mt-4">
+        <i class="bi bi-collection-play me-1"></i>
+        Episodes details
+      </h5>
+      <div class="row">
+      @for(ep of serie.episodes; track ep.id; let i = $index) {
+      <div class="col-md-2">
+        <div class="card shadow-sm h-100">
+          <img [src]="ep.image" class="card-img-top" alt="Episode Image" width="30" height="70" />
+          <div class="card-body">
+            <h6 class="card-title mb-2">Episode {{ ep.index }}</h6>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-semibold">Rating:</span>
+              <app-star-rating
+                [max]="10"
+                [rating]="ep.rating"
+              ></app-star-rating>
+            </div>
+          </div>
+        </div>
+      </div>
+      }@empty {
+      <div class="col-12">
+        <div class="alert alert-info text-center">
+          No episodes added for this series.
+        </div>
+      </div>
+      }</div>
+      <div class="card mt-3 p-3 border-start border-4 border-warning">
+        <h6 class="fw-semibold mb-3">Episode {{ epIndex }}</h6>
+
+        <div class="mb-2">
+          <label class="form-label">Episode Image URL</label>
+          <input
+            type="url"
+            class="form-control"
+            [(ngModel)]="ep.image"
+            name="episodeImage"
+          />
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Rating</label>
+          <input
+            type="number"
+            min="1"
+            max="10"
+            class="form-control"
+            [(ngModel)]="ep.rating"
+            name="episodeRating"
+          />
+        </div>
+        <button
+          class="btn btn-outline-primary mx-3 mt-2"
+          type="button"
+          (click)="addEp()"
+        >
+          Add Episode
+        </button>
+      </div>
+
+      }
+    </div>
+
+    <button class="btn btn-success px-3" [disabled]="f.invalid">Save</button>
+    <a routerLink="/admin/series" class="btn btn-secondary ms-2 px-3">Cancel</a>
   </form>
 </div>

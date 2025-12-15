@@ -1,9 +1,9 @@
-<div class="d-flex align-items-center">
-  <span class="fw-bold text-primary w-25">{{ rating }}/{{ max }}</span>
-  <div>
+<div class="d-flex align-items-center row">
+  <span class="fw-bold text-primary">{{ rating }}/{{ max }}</span>
+  <div >
 @for (star of stars; track $index; let i = $index) {
   <i
-    class="bi"
+    class=" bi "
     [ngClass]="{
       'bi-star-fill': i < fullStars,
       'bi-star-half': i === fullStars && hasHalfStar,

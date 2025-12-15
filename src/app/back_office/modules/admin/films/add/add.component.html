@@ -1,5 +1,5 @@
 <div class="container mt-4 card p-4">
-  <h2 class="fw-bold mb-4">Add New Film</h2>
+  <h2 class="fw-bold mb-4">Add Film</h2>
 
   <form #f="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
@@ -7,51 +7,53 @@
       <input
         type="text"
         class="form-control"
-        required
         [(ngModel)]="film.title"
         name="title"
         required
+        #title="ngModel"
       />
+      @if (title.invalid && title.touched) {
+      <div class="text-danger">Title is required</div>
+      }
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Categories</label>
+      <label class="form-label fw-semibold">Categories</label>
+
       <select
-        name="categories"
+        name="category"
         class="form-select"
         [(ngModel)]="selectedCategory"
-        (change)="onSelectCategories($event)"
+        (change)="onSelectCategories()"
         required
+        #category="ngModel"
       >
-        <option value="" selected>Choix Categories of this film</option>
-        @for(item of categories ; track item.id){
-        <option
-          [value]="item.id"
-          [disabled]="isCategorySelected(item.id)"
-        >
+        <option value="">Add categories to this film</option>
+
+        @for (item of categories; track item.id) {
+        <option [value]="item.id" [disabled]="isCategorySelected(item.id)">
           {{ item.label }}
         </option>
         }
       </select>
+      @if (category.invalid && category.touched) {
+      <div class="text-danger">Category is required</div>
+      }
 
-      <ul class="list-group list-group-horizontal mt-1 w-25">
-        @for(item of film.categories ; track item.id){
-        <li class="list-group-item list-group-item-action list-group-item-primary" (click)="deleteCategoriesSelected(item.id)" style="cursor: pointer;">{{ item.label }}</li>
+      <ul class="list-group list-group-horizontal flex-wrap gap-2 mt-2">
+        @for (item of film.categories; track item.id) {
+        <li
+          class="list-group-item list-group-item-warning rounded-pill px-3 py-1"
+          (click)="deleteCategoriesSelected(item.id)"
+          style="cursor: pointer"
+        >
+          {{ item.label }}
+          <i class="bi bi-x ms-1"></i>
+        </li>
         }
       </ul>
     </div>
 
-    <div class="mb-3">
-      <label class="form-label">Duration (Minutes)</label>
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="film.duration"
-        name="duration"
-        min="5"
-        required
-      />
-    </div>
     <div class="mb-3">
       <label class="form-label">Image URL</label>
       <input
@@ -60,7 +62,11 @@
         [(ngModel)]="film.image"
         name="image"
         required
+        #image="ngModel"
       />
+      @if (image.invalid && image.touched) {
+      <div class="text-danger">Image is required.</div>
+      }
     </div>
 
     <div class="mb-3">
@@ -68,27 +74,50 @@
       <textarea
         rows="4"
         class="form-control"
-        required
         [(ngModel)]="film.description"
         name="description"
         required
+        #description="ngModel"
       ></textarea>
+      @if (description.invalid && description.touched) {
+      <div class="text-danger">Description is required.</div>
+      }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Rating</label>
       <input
         type="number"
-        class="form-control"
         min="1"
         max="10"
+        class="form-control"
         [(ngModel)]="film.rating"
         name="rating"
         required
+        #rating="ngModel"
       />
+      @if (rating.invalid && rating.touched) {
+      <div class="text-danger">Rating is required, min 1 and max 10.</div>
+      }
     </div>
 
-    <button class="btn btn-success" [disabled]="f.invalid">Save</button>
-    <a routerLink="/admin/film" class="btn btn-secondary ms-2">Cancel</a>
+    <div class="mb-3">
+      <label class="form-label">Duration (Minutes)</label>
+      <input
+        type="number"
+        min="10"
+        class="form-control"
+        [(ngModel)]="film.duration"
+        name="duration"
+        required
+        #duration="ngModel"
+      />
+      @if (duration.invalid && duration.touched) {
+      <div class="text-danger">Duration is required and min is 10 minutes.</div>
+      }
+    </div>
+
+    <button class="btn btn-success px-3" [disabled]="f.invalid">Save</button>
+    <a routerLink="/admin/film" class="btn btn-secondary ms-2 px-3">Cancel</a>
   </form>
 </div>

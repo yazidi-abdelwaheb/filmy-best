@@ -10,13 +10,11 @@
   </div>
 
   <app-search-filter
-    [page]="page"
-    [limit]="limit"
-    [sortChoix]="['Title', 'rating', 'Duration']"
+    [sortChoix]="['title', 'rating', 'duration']"
     (loadData)="loadData($event)"
+    (initPage)="initPageTo1()"
   />
 
-  <!-- FILMS TABLE -->
 
   <div class="table-responsive shadow-sm rounded table-scroll">
     <table class="table table-hover align-middle mb-0">
@@ -79,12 +77,17 @@
             </div>
           </td>
         </tr>
+        }@empty {
+        <div class="alert alert-info d-flex align-items-center gap-2 mt-2">
+          <i class="bi bi-info-circle"></i>
+          <span>No data was selected from the database.</span>
+        </div>
         }
       </tbody>
     </table>
   </div>
 
-  <!-- PAGINATION -->
+
   <div class="card-footer bg-light mt-3">
     <app-pagination
       [page]="page"

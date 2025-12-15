@@ -1,46 +1,103 @@
-<div class="film-container container mt-5">
-
-  <div class="film-card shadow-lg p-4">
-
-    <div class="row g-4">
-
+<div class="container" style="max-height: 80vh; overflow-y: hidden">
+  <div class="card border-0 rounded-4">
+    <div class="row g-0">
       <!-- IMAGE -->
-      <div class="col-md-5">
+      <div
+        class="col-md-5 bg-light d-flex align-items-center justify-content-center p-3"
+      >
         <img
-          [src]="film.image"
-          class="film-image img-fluid rounded-4 shadow-sm"
-          alt="Film Image"
+          [src]="serie.image"
+          class="img-fluid rounded-3 shadow-sm serie-img w-100"
+          alt="serie Image"
         />
       </div>
 
       <!-- DETAILS -->
-      <div class="col-md-7">
-
-        <div class="detail-row mb-2">
-          <strong>Title :</strong>
-          <h2 class="film-title fw-bold ms-2">{{ film.title }}</h2>
+      <div
+        class="col-md-7 p-4 p-lg-5"
+        style="overflow-y: auto; max-height: 80vh"
+      >
+        <!-- TITLE & EPISODE NUMBER -->
+        <div
+          class="d-flex justify-content-between align-items-center flex-wrap"
+        >
+          <h2 class="fw-bold mb-1">{{ serie.title }}</h2>
+          <span class="badge bg-dark fs-6">
+            {{ serie.episodeNbr }} Episodes
+          </span>
         </div>
 
-        <div class="detail-row mb-2">
-          <strong>Category :</strong>
-          <span class="ms-2 category">{{ film.categories }}</span>
+        <!-- CATEGORIES -->
+        <div class="mt-3">
+          <span class="fw-semibold me-2 fs-5">Categories :</span>
+          @for (item of serie.categories; track $index) {
+          <span class="badge bg-warning text-dark me-1">
+            {{ item.label }}
+          </span>
+          }
         </div>
 
-        <p class="film-description mt-3">{{ film.description }}</p>
+        <!-- DESCRIPTION -->
+        <p class="text-muted mt-4 lh-lg">
+          {{ serie.description }}
+        </p>
 
-        <div class="info-list mt-3">
-          <p><i class="bi bi-star-fill text-warning"></i> <strong>Rating:</strong> {{ film.rating }}/10</p>
+        <!-- RATING -->
+        <div class="d-flex align-items-center gap-3 mt-3">
+          <span class="fw-semibold me-2 fs-5">Rating :</span>
+          <app-star-rating [max]="10" [rating]="serie.rating"></app-star-rating>
         </div>
 
-        <div class="mt-4">
-          <a class="btn btn-warning me-2 px-3" [routerLink]="['/admin/film', film.id, 'edit']">
-            <i class="bi bi-pencil-square"></i> Edit
+        <!-- EPISODES -->
+
+        <div class="mt-5">
+          <h5 class="fw-bold mb-3">
+            <i class="bi bi-collection-play me-2"></i> Episodes
+          </h5>
+          <div class="row g-3">
+            @for(ep of serie.episodes; track ep.id; let i = $index) {
+            <div class="col-md-6">
+              <div class="card shadow-sm h-100">
+                <img
+                  [src]="ep.image"
+                  class="card-img-top"
+                  alt="Episode Image"
+                />
+                <div class="card-body">
+                  <h6 class="card-title mb-2">Episode {{ ep.index }}</h6>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="fw-semibold">Rating:</span>
+                    <app-star-rating
+                      [max]="10"
+                      [rating]="ep.rating"
+                    ></app-star-rating>
+                  </div>
+                </div>
+              </div>
+            </div>
+            }@empty {
+            <div class="col-12">
+              <div class="alert alert-info text-center">
+                No episodes added for this series.
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="mt-5 d-flex gap-2 flex-wrap">
+          <a
+            class="btn btn-warning px-4"
+            [routerLink]="['/admin/series', serie.id, 'edit']"
+          >
+            <i class="bi bi-pencil-square me-1"></i> Edit
           </a>
-          <a class="btn btn-outline-secondary px-3" routerLink="/admin/film">
-            <i class="bi bi-arrow-left"></i> Back
+
+          <a class="btn btn-outline-dark px-4" routerLink="/admin/series">
+            <i class="bi bi-arrow-left me-1"></i> Back
           </a>
         </div>
-
       </div>
     </div>
   </div>

@@ -27,53 +27,39 @@ export class ListComponent implements OnInit {
   limit = 5;
   hasNext = false;
 
-  searchText = '';
-  selectedCategory = '';
-
-  sortBy: 'title' | 'rating' = 'title';
-  sortOrder: 'asc' | 'desc' = 'asc';
-
-  categories: Category[] = [];
-
   constructor(
     private filmService: FilmsService,
     private router: Router,
-    private categoryService: CategoriesService
   ) {}
 
   ngOnInit(): void {
     this.loadData();
-    this.categoryService.all().subscribe((data) => (this.categories = data));
   }
 
   // Méthode loadData adaptée pour recevoir un objet
-  loadData(params?: { search?: string; filterCategory?: string }) {
-    if (params?.search !== undefined) {
-      this.searchText = params.search;
-    }
-    if (params?.filterCategory !== undefined) {
-      this.selectedCategory = params.filterCategory;
-    }
-
-    console.log(
-      'searchText:',
-      this.searchText,
-      'selectedCategory:',
-      this.selectedCategory
-    );
-
+  loadData(params?: {
+    search?: string;
+    filterCategory?: string;
+    sort?: string;
+    order?: 'asc' | 'desc';
+  }) {
     this.filmService
       .list(
         this.page,
         this.limit,
-        this.selectedCategory,
-        this.searchText
-        // this.sortBy, this.sortOrder
+        params?.filterCategory ? params?.filterCategory : '',
+        params?.search ? params?.search : '',
+        params?.sort ? params?.sort : 'title',
+        params?.order ? params?.order : 'asc'
       )
       .subscribe((data) => {
         this.films = data;
         this.hasNext = data.length === this.limit;
       });
+  }
+
+  initPageTo1() {
+    this.page = 1;
   }
 
   onPageChange(page: number) {
@@ -83,21 +69,6 @@ export class ListComponent implements OnInit {
 
   onLimitChange(limit: number) {
     this.limit = limit;
-    this.page = 1;
-    this.loadData();
-  }
-
-  onSearch() {
-    this.page = 1;
-    this.loadData();
-  }
-
-  onSortChange() {
-    this.page = 1;
-    this.loadData();
-  }
-
-  onFilter() {
     this.page = 1;
     this.loadData();
   }
@@ -129,8 +100,6 @@ export class ListComponent implements OnInit {
   onReload() {
     this.page = 1;
     this.limit = 5;
-    this.searchText = '';
-    this.selectedCategory = '';
     this.loadData();
   }
 

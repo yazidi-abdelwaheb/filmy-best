@@ -14,7 +14,7 @@ import { CategoriesService } from '../../../../shared/services/categories.servic
 export class AddComponent implements OnInit {
   film: Film = new Film();
   categories: Category[] = [];
-  selectedCategory!: string;
+  selectedCategory: string ="";
 
   constructor(
     private fs: FilmsService,
@@ -35,7 +35,7 @@ export class AddComponent implements OnInit {
     });
   }
 
-  onSelectCategories(event: any) {
+  onSelectCategories() {
     if (this.selectedCategory) {
       const categoryToAdd = this.categories.find(
         (e) => e.id === this.selectedCategory
@@ -46,6 +46,8 @@ export class AddComponent implements OnInit {
         }
       }
     }
+
+    this.selectedCategory=""
   }
 
   isCategorySelected(itemId: string | number): boolean {

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import environemnt from '../../../environemnts/environemnt.prod';
@@ -12,8 +12,34 @@ export class SeriesService {
 
   constructor(private http: HttpClient) {}
 
- list(): Observable<Serie[]> {
-    return this.http.get<Serie[]>(`${this.apiUrl}`);
+ list(
+    page: number,
+    limit: number,
+    categoryId?: string,
+    title?: string,
+    sortBy?: string,
+    orderSort?: 'asc' | 'desc'
+  ): Observable<Serie[]> {
+    let params = new HttpParams();
+
+    if (title) {
+      params = params.set('title_like', title);
+    }
+
+    if (categoryId) {
+      params = params.set('categories[0].id', categoryId);
+    }
+
+    const sort = sortBy ? sortBy : 'title';
+    const order = orderSort ? orderSort : 'asc';
+
+    params = params.set('_sort', sort);
+    params = params.set('_order', order);
+
+    params = params.set('_page', page);
+    params = params.set('_limit', limit);
+
+    return this.http.get<Serie[]>(this.apiUrl, { params });
   }
 
   getOne(id: string): Observable<Serie> {
