@@ -6,6 +6,7 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
+import { Admin } from '../../shared/models/admin.model';
 
 @Component({
   selector: 'app-admin',
@@ -13,12 +14,15 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
+   admin!: Admin | null;
   constructor(protected authService: AuthService, private router: Router) {}
 
-
+  ngOnInit(): void {
+    this.admin = this.authService.getCurrentAdmin();
+  }
   logout() {
-    localStorage.removeItem('admin')
-    this.router.navigate(['/admin/sign-in']);
+    this.authService.signOut();
+    this.router.navigate(['/sign-in']);
   }
 }

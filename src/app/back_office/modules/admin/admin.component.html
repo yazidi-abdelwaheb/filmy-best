@@ -1,4 +1,3 @@
-@if(authService.isLoggedIn()){
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark px-3">
   <a class="navbar-brand fw-bold" routerLink="/admin">FILMY BEST</a>
 
@@ -54,6 +53,12 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
           <li>
+            <span class="dropdown-item">
+               {{ admin?.username}} ({{admin?.role}})
+            </span>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
             <a class="dropdown-item">
               <i class="bi bi-person"></i> Mon compte
             </a>
@@ -74,6 +79,4 @@
   <router-outlet></router-outlet>
 </div>
 
-}@else {
-<router-outlet></router-outlet>
-}
+

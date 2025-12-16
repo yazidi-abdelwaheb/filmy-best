@@ -11,29 +11,12 @@ import { CategoriesService } from '../../../shared/services/categories.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-films: Film[] = [];
-  totalFilms: number = 0;
-  totalCategories: number = 0;
 
-  recentFilms: Film[] = [];
+  totalFilms: number = 16;
+  totalCategories: number = 20;
+  totalSeries : number = 30;
 
-  categories: Category[] = [];
+  constructor() {}
 
-  constructor(private fs: FilmsService , private cs : CategoriesService) {}
-
-  ngOnInit(): void {
-    this.loadFilms();
-    //this.loadCategory()
-  }
-
-  loadFilms() {
-   this.totalFilms = this.fs.getTotal()
-  }
-
-  /*loadCategory() {
-    this.cs.list().subscribe((data) => {
-      this.categories = data;
-      this.totalCategories = data.length;
-    });
-  }*/
+ 
 }

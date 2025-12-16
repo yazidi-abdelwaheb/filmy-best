@@ -43,14 +43,8 @@ export class LoginComponent {
 
     const { username, password } = this.loginForm.value;
 
-    if (username === 'admin' && password === '1234') {
-      const adminUser = {
-        username,
-        password,
-        role: 'admin',
-      };
-      localStorage.setItem('admin', JSON.stringify(adminUser));
-
+    const admin =this.authService.signIn(username,password)
+    if (admin) {
       this.router.navigate(['/admin']);
     } else {
       this.errorMessage = 'Invalid username or password';

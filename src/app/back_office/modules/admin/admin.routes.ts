@@ -10,10 +10,6 @@ export const adminRoutes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'sign-in',
-    component: LoginComponent,
-  },
-  {
     path: 'film',
     component : FilmsComponent,
     loadChildren : () => import('./films/films.routes').then(m => m.filmRoutes)

@@ -8,24 +8,58 @@ import { Admin } from '../models/admin.model';
 })
 export class AuthService {
   /**
-   * A service for processing data using a JSON server;
-   * if you are processing using a real backend system, change this service.
+   * Service mock pour authentification.
+   * Pour un vrai backend, remplace les méthodes avec des appels HTTP.
    */
 
   private api = `${environemnt.apiUrl}/auth`;
   private admins: Admin[] = [];
+
   constructor(private http: HttpClient) {
-    //delete this table
+    // table mock (à supprimer si tu utilises un vrai backend)
     this.admins = [
       { id: '1', username: 'admin', password: 'admin', role: 'super' },
+      { id: '2', username: 'moderator', password: '1234', role: 'admin' },
     ];
   }
+
+  signIn(username: string, password: string): Admin | null {
+    const admin = this.admins.find(
+      (e) => e.username === username && e.password === password
+    );
+
+    if (admin) {
+      localStorage.setItem('admin', admin.id);
+      return admin
+    }
+
+    return null;
+  }
+
+  
+  signOut(): void {
+    localStorage.removeItem('admin');
+  }
+
+ 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('admin');
   }
 
+ 
   isAdmin(): boolean {
-    const user = JSON.parse(localStorage.getItem('admin') || '{}');
-    return user.role === 'admin';
+    const id = localStorage.getItem('admin');
+    if (!id) return false;
+
+    const admin = this.admins.find((e) => e.id === id);
+    return admin ? ['super', 'admin'].includes(admin.role) : false;
+  }
+
+  
+  getCurrentAdmin(): Admin | null {
+    const id = localStorage.getItem('admin');
+    if (!id) return null;
+
+    return this.admins.find((e) => e.id === id) || null;
   }
 }
