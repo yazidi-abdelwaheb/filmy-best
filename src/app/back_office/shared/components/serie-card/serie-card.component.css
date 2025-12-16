@@ -4,8 +4,13 @@
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 
-  
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+  }
+
   .card-img-wrapper {
     position: relative;
 
@@ -43,26 +48,7 @@
         color: #e50914; /* Accent rouge Netflix */
       }
     }
-  }
-   &::after {
-    content: attr(desc); /* récupère la valeur de l’attribut desc */
-    position: absolute;
-    bottom: -100%; /* caché au départ */
-    left: 0;
-    width: 100%;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    font-size: 0.95rem;
-    text-align: center;
-    transition: bottom 0.4s ease-in-out;
-    opacity: 0;
-  }
 
-  &:hover::after {
-     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
-    bottom: 0; /* remonte */
-    opacity: 1;
-  }
+   
+  } 
 }
