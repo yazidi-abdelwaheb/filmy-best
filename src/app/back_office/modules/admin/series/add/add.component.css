@@ -1,0 +1,21 @@
+.episode-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.episode-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+
+.episode-img {
+  height: 120px;
+  object-fit: cover;
+}
+
+button.btn-danger {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -5,11 +5,13 @@ import { CategoriesService } from '../../../../shared/services/categories.servic
 import Category from '../../../../shared/models/category.model';
 import { SeriesService } from '../../../../shared/services/series.service';
 import { Episode, Serie } from '../../../../shared/models/serie.model';
-import { StarRatingComponent } from '../../../../shared/components/star-rating/star-rating.component';
+import { EpCardComponent } from '../../../../shared/components/ep-card/ep-card.component';
+import { QuillModule } from 'ngx-quill';
+
 
 @Component({
   selector: 'app-add',
-  imports: [FormsModule, RouterLink , StarRatingComponent],
+  imports: [FormsModule, RouterLink, EpCardComponent , QuillModule],
   templateUrl: './add.component.html',
   styleUrl: './add.component.css',
 })
@@ -17,8 +19,8 @@ export class AddComponent {
   serie: Serie = new Serie();
   categories: Category[] = [];
   selectedCategory: string = '';
-  ep : Episode = new Episode();
-  epIndex:number = 1
+  ep: Episode = new Episode();
+  epIndex: number = 1;
 
   constructor(
     private fs: SeriesService,
@@ -41,11 +43,15 @@ export class AddComponent {
     });
   }
 
-  addEp(){
-    this.ep.index = this.epIndex
-    this.serie.episodes = [...this.serie.episodes,this.ep]
-    this.epIndex ++
-    this.ep = new Episode()
+  addEp() {
+    const nextIndex = this.serie.episodes.length + 1;
+
+    this.ep.index = nextIndex;
+
+    this.serie.episodes = [...this.serie.episodes, { ...this.ep }];
+
+    this.epIndex = nextIndex + 1;
+    this.ep = new Episode();
   }
 
   onSelectCategories() {
@@ -73,7 +79,9 @@ export class AddComponent {
     );
   }
 
-  onEpisodeNbrChange() {
-    
+  deleteEp(index: number) {
+    this.serie.episodes.splice(index - 1, 1);
+    this.serie.episodes.forEach((ep, i) => (ep.index = i + 1));
+    this.epIndex--
   }
 }

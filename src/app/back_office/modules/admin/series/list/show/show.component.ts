@@ -12,7 +12,6 @@ import { Serie } from '../../../../../shared/models/serie.model';
 })
 export class ShowComponent implements OnInit {
   serie!: Serie;
-
   constructor(private fs: SeriesService, private route: ActivatedRoute) {}
 
   ngOnInit() {

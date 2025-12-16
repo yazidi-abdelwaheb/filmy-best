@@ -1,0 +1,31 @@
+<div class="position-relative episode-wrapper mb-4">
+  <div class="card episode-card border-0 shadow-sm h-100">
+    <!-- Image -->
+    <div class="episode-img-wrapper">
+      <img
+        [src]="ep.image || 'assets/no-image.png'"
+        alt="Episode Image"
+        class="episode-img"
+      />
+
+      <!-- Badge Episode -->
+      <span class="badge bg-dark index-badge"> EP {{ ep.index }} </span>
+        <span class="badge bg-dark duration-badge">{{ ep.durarion | duration  }} </span>
+    </div>
+
+    <!-- Content -->
+    <div class="card-body text-center py-2">
+      <small class="text-muted d-block mb-1">Rating</small>
+      <app-star-rating [max]="10" [rating]="ep.rating"> </app-star-rating>
+    </div>
+  </div>
+
+  <!-- Delete button -->
+  <div
+    class="btn btn-light btn-sm delete-btn shadow"
+    (click)="deleteEp()"
+    title="Delete Episode"
+  >
+    <i class="bi bi-trash text-danger"></i>
+  </div>
+</div>

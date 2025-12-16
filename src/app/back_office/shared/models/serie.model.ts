@@ -10,5 +10,6 @@ export class Episode {
   image!:string;
   index!:number;
   rating!:number;
+  durarion!:number
 
 }
