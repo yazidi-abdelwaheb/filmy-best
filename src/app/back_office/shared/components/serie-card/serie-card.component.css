@@ -1,0 +1,68 @@
+.custom-card {
+  background-color: #1c1c1c;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  
+  .card-img-wrapper {
+    position: relative;
+
+    img {
+      border-radius: 10px 10px 0 0;
+      object-fit: cover;
+      height: 300px;
+      width: 100%;
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  }
+
+  .card-body {
+    background: linear-gradient(to top, #141414, #1c1c1c);
+    padding: 15px;
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .episode-info {
+      color: #bbb;
+      font-size: 0.95rem;
+
+      i {
+        margin-right: 5px;
+        color: #e50914; /* Accent rouge Netflix */
+      }
+    }
+  }
+   &::after {
+    content: attr(desc); /* récupère la valeur de l’attribut desc */
+    position: absolute;
+    bottom: -100%; /* caché au départ */
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: bottom 0.4s ease-in-out;
+    opacity: 0;
+  }
+
+  &:hover::after {
+     transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+    bottom: 0; /* remonte */
+    opacity: 1;
+  }
+}

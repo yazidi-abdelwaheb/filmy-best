@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #141414 !important; /* Dark mode premium */
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  color: #bbb !important;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+.nav-link.active {
+  color: #e50914 !important; /* Accent rouge Netflix */
+  border-bottom: 2px solid #e50914;
+}

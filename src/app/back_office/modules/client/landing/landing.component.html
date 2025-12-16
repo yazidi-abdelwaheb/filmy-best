@@ -1,1 +1,133 @@
-<p>landing works!</p>
+<!-- Hero Section -->
+<header class="hero mt-5">
+  <div
+    id="carouselExampleCaptions"
+    class="carousel slide carousel-fade"
+    data-bs-ride="carousel"
+    data-bs-interval="4000"
+  >
+    <!-- Indicateurs -->
+    <div class="carousel-indicators">
+      @for (item of carouselItems; track $index; let i = $index) {
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        [attr.data-bs-slide-to]="i"
+        [class.active]="i === 0"
+        [attr.aria-current]="i === 0 ? 'true' : null"
+        [attr.aria-label]="'Slide ' + (i + 1)"
+      ></button>
+      }
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+      @for (item of carouselItems; track $index; let i = $index) {
+      <div class="carousel-item" [class.active]="i === 0">
+        <div class="hero-img-wrapper">
+          <img [src]="item.image" class="d-block hero-img" [alt]="item.title" />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="carousel-caption d-none d-md-block animate-caption">
+          <h2 class="fw-bold">{{ item.title }}</h2>
+          <p>{{ item.description }}</p>
+          <a [routerLink]="item.link" class="btn btn-danger btn-lg mt-3 shadow">
+            Show more
+          </a>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- Contrôles -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</header>
+
+<!-- Body -->
+<div class="container my-5">
+  <section #statsSection class="stats-section py-5 bg-dark text-light">
+    <div class="container">
+      <h2 class="section-title mb-5 text-center">
+        <i class="bi bi-bar-chart-fill me-2"></i> statistical
+      </h2>
+      <div class="row g-4 text-center">
+        <div class="col-md-4">
+          <div class="stat-card shadow-sm p-4 rounded">
+            <i class="bi bi-film fs-1 text-danger"></i>
+            <h3 class="mt-3"><i class="bi bi-plus"></i>{{ animatedFilms }}</h3>
+            <p class="text-light">Films available</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat-card shadow-sm p-4 rounded">
+            <i class="bi bi-collection-play fs-1 text-primary"></i>
+            <h3 class="mt-3"><i class="bi bi-plus"></i>{{ animatedSeries }}</h3>
+            <p class="text-light">Series available</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat-card shadow-sm p-4 rounded">
+            <i class="bi bi-tags-fill fs-1 text-warning"></i>
+            <h3 class="mt-3">
+              <i class="bi bi-plus"></i>{{ animatedCategories }}
+            </h3>
+            <p class="text-light">Categories</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-5">
+    <h2 class="text-light"><i class="bi bi-film me-3"></i>Trending Films</h2>
+    <div class="row g-4">
+      @for (item of films; track $index) {
+        <div class="col-md-4" ><app-film-card [item]="item" /></div>
+      
+
+      }
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="my-5">
+    <h2 class="text-light">
+      <i class="bi bi-collection-play me-3"></i> Trending Series
+    </h2>
+    <div class="row g-4">
+      @for (item of series; track $index) {
+        <div class="col-md-4"><app-serie-card [item]="item" /></div>
+        
+      }
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section class="mt-5">
+    <h2 class="text-light"><i class="bi bi-tags-fill"></i> Categories</h2>
+    <div class="d-flex flex-wrap gap-3"></div>
+    @for (item of ctagories; track $index) {
+
+    <span class="badge bg-warning text-dark fs-5 me-3">{{ item.label }}</span>
+        
+    }
+  </section>
+</div>

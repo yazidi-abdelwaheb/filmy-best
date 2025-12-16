@@ -1,0 +1,29 @@
+.footer {
+  background-color: #141414; /* Style Netflix */
+  font-size: 0.95rem;
+
+  h5, h6 {
+    color: #e50914; /* Rouge Netflix */
+  }
+
+  .footer-link {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #fff;
+  }
+
+  .social-icons a {
+    color: #bbb;
+    font-size: 1.3rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #e50914;
+  }
+}
