@@ -17,9 +17,11 @@ export const clientRoutes: Routes = [
   {
     path: 'films',
     component: FilmsComponent,
+    loadChildren : () => import('./films/films.routes').then(m => m.filmsRoutes)
   },
   {
     path: 'series',
     component: SeriesComponent,
+    loadChildren : () => import('./series/series.routes').then(m => m.SeriesRoutes)
   },
 ];

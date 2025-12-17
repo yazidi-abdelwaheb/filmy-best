@@ -1,27 +1,28 @@
-<div class="container py-5">
+<div class="category-section bg-black text-light">
+  <header class="position-relative mb-3">
+    <img
+      [src]="category.image"
+      class="img-fluid rounded shadow-lg"
+      alt="category {{ category.label }} Image"
+    />
+    <span
+      class="category-label position-absolute bottom-0 start-0 m-3 px-3 py-1 rounded-pill fw-bold shadow-sm"
+    >
+      <i class="bi bi-tags-fill me-2"></i> {{ category.label }}
+    </span>
+  </header>
 
-  <div class="mt-5">
-
+  <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h1 class="section-title mb-0">Films</h1>
-      <div class="d-flex align-items-center justify-content-between mb-3">
-       
-        <div class="input-group w-100 border border-danger rounded-pill ">
-          <span
-            class="input-group-text bg-dark text-light border-0 rounded-start-pill"
-          >
-            <i class="bi bi-search"></i>
-          </span>
-          <input
-            type="text"
-            placeholder="Search in films..."
-            [(ngModel)]="searchFilms"
-            (keyup)="onSearchFilms()"
-            class="form-control bg-dark text-light border-0 rounded-end-pill shadow-sm"
-          />
-        </div>
-
-        
+      <h2 class="section-title mb-0 text-danger">
+        <i class="bi bi-film me-3"></i> Films
+      </h2>
+      <div class="d-flex align-items-center">
+        <app-search-zone
+          [search]="searchFilms"
+          placeholder="Search in Films..."
+          (searchfn)="onSearchFilms($event)"
+        />
         <div class="btn-group ms-3">
           <button
             class="btn btn-danger btn-sm rounded-circle shadow-sm me-2"
@@ -39,42 +40,31 @@
       </div>
     </div>
 
-  
     <div id="filmsScroll" class="scroll-container d-flex">
       @for (item of films; track $index) {
       <div class="scroll-item me-3">
         <app-film-card [item]="item"></app-film-card>
       </div>
-      }@empty {
-        <div class="alert alert-info text-center my-3 w-100 fw-bold">
-           <i class="bi bi-info-circle-fill me-2"></i> No Films Available!
-        </div>
+      } @empty {
+      <div class="alert alert-info text-center my-3 w-100 fw-bold">
+        <i class="bi bi-info-circle-fill me-2"></i> No Films Available!
+      </div>
       }
     </div>
   </div>
 
-
-  <div class="mt-5">
+  <!-- Series -->
+  <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h1 class="section-title mb-0">Series</h1>
-      <div class="d-flex align-items-center justify-content-between mb-3">
-       
-        <div class="input-group w-100 border border-danger rounded-pill ">
-          <span
-            class="input-group-text bg-dark text-light border-0 rounded-start-pill"
-          >
-            <i class="bi bi-search"></i>
-          </span>
-          <input
-            type="text"
-            placeholder="Search in series...."
-            [(ngModel)]="serachseries"
-            (keyup)="onSearchSeries()"
-            class="form-control bg-dark text-light border-0 rounded-end-pill shadow-sm"
-          />
-        </div>
-
-        
+      <h2 class="section-title mb-0 text-danger">
+        <i class="bi bi-collection-play me-3"></i> Series
+      </h2>
+      <div class="d-flex align-items-center">
+        <app-search-zone
+          [search]="serachseries"
+          placeholder="Search in Series..."
+          (searchfn)="onSearchSeries($event)"
+        />
         <div class="btn-group ms-3">
           <button
             class="btn btn-danger btn-sm rounded-circle shadow-sm me-2"
@@ -97,10 +87,10 @@
       <div class="scroll-item me-3">
         <app-serie-card [item]="item"></app-serie-card>
       </div>
-      }@empty {
-        <div class="alert alert-info text-center my-3 w-100 fw-bold">
-           <i class="bi bi-info-circle-fill me-2"></i> No series Available!
-        </div>
+      } @empty {
+      <div class="alert alert-info text-center my-3 w-100 fw-bold">
+        <i class="bi bi-info-circle-fill me-2"></i> No Series Available!
+      </div>
       }
     </div>
   </div>

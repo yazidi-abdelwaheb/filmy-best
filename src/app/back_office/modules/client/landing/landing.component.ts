@@ -10,6 +10,7 @@ import { DurationPipe } from '../../../shared/pipes/duration.pipe';
 import { RouterLink } from '@angular/router';
 import { FilmCardComponent } from '../../../shared/components/film-card/film-card.component';
 import { SerieCardComponent } from '../../../shared/components/serie-card/serie-card.component';
+import { ToCapitaleCasePipe } from '../../../shared/pipes/to-capitale-case.pipe';
 
 export interface CarouselItem {
   image: string;
@@ -20,7 +21,7 @@ export interface CarouselItem {
 
 @Component({
   selector: 'app-landing',
-  imports: [FilmCardComponent, RouterLink , SerieCardComponent],
+  imports: [FilmCardComponent, RouterLink , SerieCardComponent , ToCapitaleCasePipe ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
 })

@@ -1,0 +1,39 @@
+<app-video-card [film]="film"></app-video-card>
+
+<section class="film-details position-relative text-light py-5">
+  <!-- Background immersif -->
+  <div class="film-bg"></div>
+  <div class="film-overlay"></div>
+
+  <div class="container position-relative">
+    <!-- Titre -->
+    <h1 class="fw-bold mb-3 display-4 text-gradient animate-title">
+      {{ film.title | toCapitaleCase }}
+    </h1>
+
+    <!-- Durée + Note -->
+    <div class="d-flex align-items-center gap-3 mb-3">
+      <span class="badge badge-premium bg-secondary shadow-sm">
+        <i class="bi bi-clock-fill me-1"></i> {{ film.duration | duration }}
+      </span>
+      <app-star-rating [max]="10" [rating]="film.rating"></app-star-rating>
+    </div>
+
+    <!-- Description -->
+    <p
+      class="lead text-light mb-4 animate-fade"
+      [innerHTML]="film.description"
+    ></p>
+
+    <!-- Catégories -->
+    <div class="d-flex flex-wrap gap-3">
+      <span
+        *ngFor="let cat of film.categories"
+        class="badge badge-premium bg-warning text-dark shadow-sm animate-badge"
+        [routerLink]=" '/categories/'+cat.id "
+      >
+        <i class="bi bi-tag-fill me-1"></i> {{ cat.label | toCapitaleCase }}
+      </span>
+    </div>
+  </div>
+</section>

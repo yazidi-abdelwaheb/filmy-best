@@ -1,0 +1,12 @@
+<div class="input-group w-100 border border-danger rounded-pill">
+  <span class="input-group-text bg-dark text-light border-0 rounded-start-pill">
+    <i class="bi bi-search"></i>
+  </span>
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    [(ngModel)]="search"
+    (keyup)="onSearch()"
+    class="form-control bg-dark text-light border-0 rounded-end-pill shadow-sm"
+  />
+</div>

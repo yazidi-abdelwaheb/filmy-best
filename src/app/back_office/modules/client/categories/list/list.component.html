@@ -1,6 +1,6 @@
 <section class="categories-section py-5 bg-dark text-light">
   <div class="container mt-5">
-    <h2 class="section-title text-center mb-5">
+    <h2 class="section-title mb-5">
       <i class="bi bi-tags-fill me-2"></i> Categories
     </h2>
 
@@ -21,9 +21,5 @@
       </div>
     </div>
   </div>
-  <div class="text-center mt-4">
-    <button class="btn btn-danger btn-lg shadow-sm" (click)="showMore()">
-      <i class="bi bi-plus-circle me-2"></i> Show More
-    </button>
-  </div>
+  <app-show-more-btn (action)="showMore()" [isLoading]="isLoading" />
 </section>

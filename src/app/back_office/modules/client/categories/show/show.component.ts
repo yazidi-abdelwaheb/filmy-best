@@ -7,14 +7,23 @@ import { ActivatedRoute } from '@angular/router';
 import { SerieCardComponent } from '../../../../shared/components/serie-card/serie-card.component';
 import { FilmCardComponent } from '../../../../shared/components/film-card/film-card.component';
 import { FormsModule } from '@angular/forms';
+import { SearchZoneComponent } from '../../../../shared/components/search-zone/search-zone.component';
+import Category from '../../../../shared/models/category.model';
+import { CategoriesService } from '../../../../shared/services/categories.service';
 
 @Component({
   selector: 'app-show',
-  imports: [SerieCardComponent, FilmCardComponent, FormsModule],
+  imports: [
+    SerieCardComponent,
+    FilmCardComponent,
+    FormsModule,
+    SearchZoneComponent,
+  ],
   templateUrl: './show.component.html',
   styleUrl: './show.component.css',
 })
 export class ShowComponent implements OnInit {
+  category !:Category
   films: Film[] = [];
   series: Serie[] = [];
   filmsPage: number = 1;
@@ -27,6 +36,7 @@ export class ShowComponent implements OnInit {
   constructor(
     private fs: FilmsService,
     private ss: SeriesService,
+    private cs:CategoriesService,
     private actRoute: ActivatedRoute,
     private ngZone: NgZone
   ) {}
@@ -51,27 +61,31 @@ export class ShowComponent implements OnInit {
       });
   }
 
-  onSearchFilms() {
+  onSearchFilms(query: string) {
+    this.searchFilms = query;
     if (this.searchFilms.trim()) {
       this.filmsPage = 1;
       this.loadFilms('search');
     } else {
-      this.loadFilms("search");
+      this.loadFilms('search');
     }
   }
 
-  onSearchSeries() {
+  onSearchSeries(query: string) {
+    this.searchFilms = query;
     if (this.serachseries.trim()) {
       this.seriesPage = 1;
-      this.loadSeries("search");
+      this.loadSeries('search');
     } else {
-      this.searchFilms=""
-      this.loadSeries("search");
+      this.searchFilms = '';
+      this.loadSeries('search');
     }
   }
 
   ngOnInit(): void {
     this.id = this.actRoute.snapshot.params['id'];
+
+    this.cs.getOne(this.id).subscribe(data=>{this.category=data});
 
     this.loadFilms();
     this.loadSeries();

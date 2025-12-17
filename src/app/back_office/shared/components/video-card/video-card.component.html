@@ -1,0 +1,89 @@
+<section class="video-hero position-relative">
+  <img [src]="film.image" alt="{{ film.title }} cover" class="hero-img" />
+
+  <div class="overlay"></div>
+
+  <div
+    class="play-btn position-absolute top-50 start-50 translate-middle"
+    (click)="togglePlay()"
+  >
+    <i
+      [class]="isPlaying ? 'bi bi-pause-circle-fill' : 'bi bi-play-circle-fill'"
+    ></i>
+  </div>
+
+  <div class="progress-container position-absolute bottom-0 start-0 w-100 px-3">
+    <div class="d-flex align-items-center justify-content-between text-light">
+      <span class="timecode fw-bold">{{ currentTime | duration }}</span>
+
+      <div class="progress-bar flex-grow-1 mx-3" (click)="seek($event)">
+        <div class="progress-fill" [style.width.%]="progress"></div>
+      </div>
+      <span class="timecode fw-bold">{{ film.duration | duration }}</span>
+    </div>
+
+    <div
+      class="controls d-flex align-items-center justify-content-between mt-2 text-light"
+    >
+      <div class="d-flex align-items-center gap-3 text-light">
+        <i
+          [class]="isPlaying ? 'bi bi-pause-fill' : 'bi bi-play-fill'"
+          (click)="togglePlay()"
+        ></i>
+
+        <i
+          [class]="isMuted ? 'bi bi-volume-mute-fill' : 'bi bi-volume-up-fill'"
+          (click)="toggleMute()"
+        ></i>
+
+        <i class="bi bi-hdmi-fill"></i>
+      </div>
+
+      <div class="d-flex align-items-center gap-3">
+        <div class="settings position-relative d-inline-block">
+          <i class="bi bi-gear-fill fs-5" (click)="toggleSettings()"></i>
+
+          <div
+            *ngIf="showSettings && !showQualityMenu"
+            class="settings-menu position-absolute bottom-100 end-0 mb-2 bg-dark text-light rounded shadow-lg"
+          >
+            <ul class="list-unstyled mb-0">
+              <li class="menu-item" (click)="openQualityMenu()">
+                <span>Qualité</span>
+                <span class="text-secondary">{{ currentQuality }}</span>
+              </li>
+              <li class="menu-item" (click)="changeSpeed()">
+                <span>Vitesse</span>
+                <span class="text-secondary">x{{ currentSpeed }}</span>
+              </li>
+              <li class="menu-item" (click)="toggleSubtitles()">
+                <span>Sous-titres</span>
+                <span class="text-secondary">{{
+                  subtitlesOn ? "Activés" : "Désactivés"
+                }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            *ngIf="showQualityMenu"
+            class="settings-menu position-absolute bottom-100 end-0 mb-2 bg-dark text-light rounded shadow-lg"
+          >
+            <ul class="list-unstyled mb-0">
+              <li class="menu-item" (click)="selectQuality('144p')">144p</li>
+              <li class="menu-item" (click)="selectQuality('240p')">240p</li>
+              <li class="menu-item" (click)="selectQuality('360p')">360p</li>
+              <li class="menu-item" (click)="selectQuality('720p')">720p</li>
+              <li class="menu-item" (click)="selectQuality('1080p')">1080p</li>
+              <li class="menu-item text-danger" (click)="closeQualityMenu()">
+                Retour
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <i class="bi bi-arrows-fullscreen" (click)="toggleFullscreen()"></i>
+      </div>
+    </div>
+  </div>
+</section>

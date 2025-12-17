@@ -1,14 +1,11 @@
 <div class="bg-black bg-gradient">
   <app-navbar />
-  <div >
+  <div>
     <router-outlet></router-outlet>
   </div>
   <app-footer />
-  <button 
-  class="scroll-top-btn" 
-  (click)="scrollToTop()" 
-  *ngIf="isVisible">
-  <i class="bi bi-arrow-up-circle-fill"></i>
-</button>
-
+ 
+  <button class="scroll-top-btn" (click)="scrollToTop()" *ngIf="isVisible">
+    <i class="bi bi-arrow-up-circle-fill"></i>
+  </button>
 </div>

@@ -1,4 +1,4 @@
-<div class="card custom-card h-100 shadow-sm" [attr.desc]="item.description">
+<div class="card custom-card h-100 shadow-sm" [routerLink]="'/series/' + item.id">
   <div class="card-img-wrapper">
       <img [src]="item.image" class="card-img-top" alt="{{ item.title }}" />
       <div class="card-overlay">

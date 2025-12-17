@@ -6,7 +6,7 @@ import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-client',
-  imports: [RouterOutlet , NavbarComponent,FooterComponent,NgIf],
+  imports: [RouterOutlet , NavbarComponent,FooterComponent,NgIf ],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })

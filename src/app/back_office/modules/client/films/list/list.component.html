@@ -1,0 +1,23 @@
+<section class="py-5">
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <h2 class="section-title"><i class="bi bi-film me-3"></i> Films</h2>
+
+      <app-search-zone
+        [search]="search"
+        placeholder="Search in Films..."
+        (searchfn)="onSearch($event)"
+      />
+    </div>
+    <div class="row g-4">
+      @for (item of films; track $index) {
+      <div class="col-md-4" ><app-film-card [item]="item" /></div>
+
+      }
+    </div>
+    <app-show-more-btn
+      (action)="showMore()"
+      [isLoading]="isLoading"
+    ></app-show-more-btn>
+  </div>
+</section>

@@ -125,7 +125,7 @@
     <div class="d-flex flex-wrap gap-3 mt-3"></div>
     @for (item of ctagories; track $index) {
 
-    <span class="badge bg-warning text-dark fs-5 me-3 bage-cat" >{{ item.label }}</span>
+    <span class="badge bg-warning text-dark fs-5 me-3 bage-cat"  [routerLink]="'categories/'+item.id">{{ item.label | toCapitaleCase}}</span>
 
     }
   </section>
