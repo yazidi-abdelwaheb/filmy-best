@@ -32,7 +32,7 @@ export class FilmsService {
     }
 
     if (categoryId) {
-      params = params.set('categories[0].id', categoryId);
+      params = params.set('categoriesIds_like', categoryId);
     }
 
     const sort = sortBy ? sortBy : 'title';

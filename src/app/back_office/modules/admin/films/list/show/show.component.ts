@@ -4,10 +4,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FilmsService } from '../../../../../shared/services/films.service';
 import { DurationPipe } from '../../../../../shared/pipes/duration.pipe';
 import { StarRatingComponent } from '../../../../../shared/components/star-rating/star-rating.component';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-show',
-  imports: [RouterLink , DurationPipe , StarRatingComponent],
+  imports: [RouterLink , DurationPipe , StarRatingComponent , UpperCasePipe],
   templateUrl: './show.component.html',
   styleUrl: './show.component.css',
 })

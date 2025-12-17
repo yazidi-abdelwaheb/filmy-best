@@ -3,10 +3,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { StarRatingComponent } from '../../../../../shared/components/star-rating/star-rating.component';
 import { SeriesService } from '../../../../../shared/services/series.service';
 import { Serie } from '../../../../../shared/models/serie.model';
+import { EpCardComponent } from '../../../../../shared/components/ep-card/ep-card.component';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-show',
-  imports: [RouterLink , StarRatingComponent],
+  imports: [RouterLink , StarRatingComponent , EpCardComponent , UpperCasePipe],
   templateUrl: './show.component.html',
   styleUrl: './show.component.css',
 })

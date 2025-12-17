@@ -21,3 +21,20 @@
   color: #e50914 !important; /* Accent rouge Netflix */
   border-bottom: 2px solid #e50914;
 }
+input::placeholder{
+  color: #bbb;
+}
+
+.search-block {
+  position: relative;
+  max-width: 600px;
+}
+
+.search-block input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.5); /* glow rouge premium */
+}
+
+.search-block ul {
+  z-index: 1000;
+}

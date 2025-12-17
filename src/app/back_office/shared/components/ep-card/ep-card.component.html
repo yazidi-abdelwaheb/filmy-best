@@ -10,7 +10,9 @@
 
       <!-- Badge Episode -->
       <span class="badge bg-dark index-badge"> EP {{ ep.index }} </span>
-        <span class="badge bg-dark duration-badge">{{ ep.durarion | duration  }} </span>
+      <span class="badge bg-dark duration-badge"
+        >{{ ep.durarion | duration }}
+      </span>
     </div>
 
     <!-- Content -->
@@ -21,6 +23,7 @@
   </div>
 
   <!-- Delete button -->
+  @if (withDeleted) {
   <div
     class="btn btn-light btn-sm delete-btn shadow"
     (click)="deleteEp()"
@@ -28,4 +31,5 @@
   >
     <i class="bi bi-trash text-danger"></i>
   </div>
+  }
 </div>

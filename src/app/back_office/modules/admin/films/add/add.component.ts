@@ -30,6 +30,7 @@ export class AddComponent implements OnInit {
   }
 
   onSubmit() {
+    this.film.categoriesIds = this.film.categories.map(e=>e.id)
     this.fs.addOne(this.film).subscribe(() => {
       this.router.navigate(['/admin/film']);
     });

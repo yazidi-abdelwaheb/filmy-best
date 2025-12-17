@@ -12,6 +12,7 @@ export const clientRoutes: Routes = [
   {
     path: 'categories',
     component: CategoriesComponent,
+    loadChildren : () => import('./categories/categories.routes').then(m => m.CategoriesRoutes)
   },
   {
     path: 'films',

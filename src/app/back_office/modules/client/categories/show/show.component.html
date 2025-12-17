@@ -1,0 +1,107 @@
+<div class="container py-5">
+
+  <div class="mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1 class="section-title mb-0">Films</h1>
+      <div class="d-flex align-items-center justify-content-between mb-3">
+       
+        <div class="input-group w-100 border border-danger rounded-pill ">
+          <span
+            class="input-group-text bg-dark text-light border-0 rounded-start-pill"
+          >
+            <i class="bi bi-search"></i>
+          </span>
+          <input
+            type="text"
+            placeholder="Search in films..."
+            [(ngModel)]="searchFilms"
+            (keyup)="onSearchFilms()"
+            class="form-control bg-dark text-light border-0 rounded-end-pill shadow-sm"
+          />
+        </div>
+
+        
+        <div class="btn-group ms-3">
+          <button
+            class="btn btn-danger btn-sm rounded-circle shadow-sm me-2"
+            (click)="scrollLeft('filmsScroll')"
+          >
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button
+            class="btn btn-danger btn-sm rounded-circle shadow-sm"
+            (click)="scrollRight('filmsScroll')"
+          >
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  
+    <div id="filmsScroll" class="scroll-container d-flex">
+      @for (item of films; track $index) {
+      <div class="scroll-item me-3">
+        <app-film-card [item]="item"></app-film-card>
+      </div>
+      }@empty {
+        <div class="alert alert-info text-center my-3 w-100 fw-bold">
+           <i class="bi bi-info-circle-fill me-2"></i> No Films Available!
+        </div>
+      }
+    </div>
+  </div>
+
+
+  <div class="mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1 class="section-title mb-0">Series</h1>
+      <div class="d-flex align-items-center justify-content-between mb-3">
+       
+        <div class="input-group w-100 border border-danger rounded-pill ">
+          <span
+            class="input-group-text bg-dark text-light border-0 rounded-start-pill"
+          >
+            <i class="bi bi-search"></i>
+          </span>
+          <input
+            type="text"
+            placeholder="Search in series...."
+            [(ngModel)]="serachseries"
+            (keyup)="onSearchSeries()"
+            class="form-control bg-dark text-light border-0 rounded-end-pill shadow-sm"
+          />
+        </div>
+
+        
+        <div class="btn-group ms-3">
+          <button
+            class="btn btn-danger btn-sm rounded-circle shadow-sm me-2"
+            (click)="scrollLeft('seriesScroll')"
+          >
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button
+            class="btn btn-danger btn-sm rounded-circle shadow-sm"
+            (click)="scrollRight('seriesScroll')"
+          >
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="seriesScroll" class="scroll-container d-flex">
+      @for (item of series; track $index) {
+      <div class="scroll-item me-3">
+        <app-serie-card [item]="item"></app-serie-card>
+      </div>
+      }@empty {
+        <div class="alert alert-info text-center my-3 w-100 fw-bold">
+           <i class="bi bi-info-circle-fill me-2"></i> No series Available!
+        </div>
+      }
+    </div>
+  </div>
+</div>

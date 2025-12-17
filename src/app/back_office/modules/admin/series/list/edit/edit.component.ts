@@ -21,7 +21,7 @@ export class EditComponent implements OnInit {
   categories: Category[] = [];
   selectedCategory: string = '';
   ep: Episode = new Episode();
-  epIndex: number = 1;
+  epIndex!: number;
 
   constructor(
     private fs: SeriesService,
@@ -35,6 +35,7 @@ export class EditComponent implements OnInit {
     this.fs.getOne(id).subscribe((data) => {
       this.serie = data;
       this.selectedCategory = this.serie.categories[0].id;
+      this.epIndex = this.serie.episodes.length +1
     });
 
     this.cs.all().subscribe((data) => {
@@ -43,6 +44,7 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit() {
+    this.serie.categoriesIds = this.serie.categories.map(e=>e.id)
     const id = this.actRoute.snapshot.params['id'];
     this.serie.episodes.filter((e) => e && e.image && e.image.trim() !== '');
     this.fs.updateOne(id, this.serie).subscribe(() => {
@@ -89,6 +91,6 @@ export class EditComponent implements OnInit {
   deleteEp(index: number) {
     this.serie.episodes.splice(index - 1, 1);
     this.serie.episodes.forEach((ep, i) => (ep.index = i + 1));
-    this.epIndex--;
+    this.epIndex-- ? this.epIndex>0 : 1;
   }
 }

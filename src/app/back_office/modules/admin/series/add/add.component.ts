@@ -37,6 +37,7 @@ export class AddComponent {
   }
 
   onSubmit() {
+    this.serie.categoriesIds = this.serie.categories.map(e=>e.id)
     this.serie.episodes.filter((e) => e && e.image && e.image.trim() !== '');
     this.fs.addOne(this.serie).subscribe(() => {
       this.router.navigate(['/admin/series']);
@@ -82,6 +83,6 @@ export class AddComponent {
   deleteEp(index: number) {
     this.serie.episodes.splice(index - 1, 1);
     this.serie.episodes.forEach((ep, i) => (ep.index = i + 1));
-    this.epIndex--
+    this.epIndex-- ? this.epIndex>0 : 1;
   }
 }

@@ -1,5 +1,5 @@
 <div class="container mt-4 card p-4">
-  <h2 class="fw-bold mb-4">Add New Serie</h2>
+  <h2 class="fw-bold mb-4">Edit Serie</h2>
 
   <form #f="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
@@ -186,7 +186,7 @@
       }
     </div>
 
-    <button class="btn btn-success px-3" [disabled]="f.invalid">Save</button>
+    <button class="btn btn-warning px-3" [disabled]="f.invalid">Update</button>
     <a routerLink="/admin/series" class="btn btn-secondary ms-2 px-3">Cancel</a>
   </form>
 </div>

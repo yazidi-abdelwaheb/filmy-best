@@ -16,7 +16,7 @@ export class EditComponent {
   film: Film = new Film();
 
   categories: Category[] = [];
-  selectedCategory: string="";
+  selectedCategory: string = '';
 
   constructor(
     private fs: FilmsService,
@@ -28,7 +28,10 @@ export class EditComponent {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.fs.getOne(id).subscribe((data) => (this.film = data));
+      this.fs.getOne(id).subscribe((data) => {
+        this.film = data;
+        this.selectedCategory = this.film.categories[0].id
+      });
     }
 
     this.cs.all().subscribe((data) => {
@@ -37,6 +40,7 @@ export class EditComponent {
   }
 
   onSubmit() {
+    this.film.categoriesIds = this.film.categories.map((e) => e.id);
     this.fs.updateOne(this.film.id, this.film).subscribe(() => {
       this.router.navigate(['/admin/film']);
     });

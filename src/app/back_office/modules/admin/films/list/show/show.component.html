@@ -15,7 +15,7 @@
 
       
         <div class="d-flex justify-content-between align-items-center flex-wrap">
-          <h2 class="fw-bold mb-1">{{ film.title }}</h2>
+          <h2 class="fw-bold mb-1">{{ film.title | uppercase }}</h2>
           <span class="badge bg-dark fs-6">
             {{ film.duration | duration }}
           </span>
