@@ -1,5 +1,6 @@
 .categories-section {
   background: linear-gradient(to bottom, #141414, #1c1c1c);
+  cursor: pointer;
 }
 
 .section-title {

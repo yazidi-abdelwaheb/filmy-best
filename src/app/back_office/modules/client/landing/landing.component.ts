@@ -33,8 +33,8 @@ export class LandingComponent implements OnInit , AfterViewInit {
   @ViewChild('statsSection') statsSection!: ElementRef;
 
   // Valeurs finales (tu peux les calculer dynamiquement avec tes arrays)
-  totalFilms = 120;
-  totalSeries = 80;
+  totalFilms = 250;
+  totalSeries = 160;
   totalCategories = 15;
 
   // Valeurs animées
@@ -57,9 +57,9 @@ export class LandingComponent implements OnInit , AfterViewInit {
   }
 
   startAnimation() {
-    this.animateValue('animatedFilms', this.totalFilms, 1500);
-    this.animateValue('animatedSeries', this.totalSeries, 1500);
-    this.animateValue('animatedCategories', this.totalCategories, 1500);
+    this.animateValue('animatedFilms', this.totalFilms, 500);
+    this.animateValue('animatedSeries', this.totalSeries, 500);
+    this.animateValue('animatedCategories', this.totalCategories, 500);
   }
 
   resetStats() {
