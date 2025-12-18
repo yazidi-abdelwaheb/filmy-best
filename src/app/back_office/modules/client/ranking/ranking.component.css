@@ -1,0 +1,61 @@
+/* Section */
+.leaderboard-section {
+  
+  min-height: 100vh;
+}
+
+/* Titre */
+.leaderboard-title {
+  background: linear-gradient(90deg, #ff4b2b, #ff416c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255,75,43,0.6);
+}
+
+/* Items */
+.leaderboard-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.leaderboard-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Rang */
+.rank {
+  font-size: 1.5rem;
+}
+.rank.gold { color: #ffd700; }
+.rank.silver { color: #c0c0c0; }
+.rank.bronze { color: #cd7f32; }
+
+/* Image */
+.film-img {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Nom */
+.title {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+/* Stars + Score */
+.stars-score {
+  width: 300px;
+}
+.stars i {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.score {
+  font-size: 1.1rem;
+  text-shadow: 0 0 10px rgba(255,193,7,0.6);
+}

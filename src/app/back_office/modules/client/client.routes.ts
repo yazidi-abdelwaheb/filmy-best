@@ -3,11 +3,16 @@ import { LandingComponent } from "./landing/landing.component";
 import { CategoriesComponent } from "./categories/categories.component";
 import { FilmsComponent } from "./films/films.component";
 import { SeriesComponent } from "./series/series.component";
+import { RankingComponent } from "./ranking/ranking.component";
 
 export const clientRoutes: Routes = [
   {
     path: '',
     component: LandingComponent,
+  },
+  {
+    path: 'ranking',
+    component: RankingComponent,
   },
   {
     path: 'categories',

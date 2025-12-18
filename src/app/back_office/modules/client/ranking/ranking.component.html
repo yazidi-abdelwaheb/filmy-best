@@ -1,1 +1,113 @@
-<p>ranking works!</p>
+<section class="leaderboard-section text-light py-5">
+  <h1 class="text-center fw-bold display-4 leaderboard-title my-5">
+    🏆 FILMS LEADERBOARD
+  </h1>
+
+  <div class="container">
+    <ul class="leaderboard-list list-unstyled">
+      <li
+        *ngFor="let item of topFilms; let i = index"
+        [routerLink]=" '/films/'+item.id "
+        class="leaderboard-item d-flex align-items-center justify-content-between shadow-lg rounded p-3 mb-3"
+      >
+        <!-- Rang -->
+        <span
+          class="rank fw-bold me-3"
+          [ngClass]="{
+            gold: i === 0,
+            silver: i === 1,
+            bronze: i === 2
+          }"
+        >
+          {{ i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "#" + (i + 1) }}
+        </span>
+
+        <!-- Image -->
+        <img [src]="item.image" class="film-img me-3" alt="{{ item.title }}" />
+
+        <!-- Nom -->
+        <span class="title flex-grow-1 fw-bold">{{ item.title }}</span>
+
+        <!-- Étoiles + Score -->
+        <div class="d-flex justify-content-between align-items-center stars-score">
+          <span class="stars d-flex gap-1">
+            <ng-container
+              *ngFor="let star of [].constructor(10); let i = index"
+            >
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-star-fill': getStarType(i, item.rating) === 'full',
+                  'bi-star-half': getStarType(i, item.rating) === 'half',
+                  'bi-star': getStarType(i, item.rating) === 'empty',
+                  'text-warning': getStarType(i, item.rating) !== 'empty',
+                  '': getStarType(i, item.rating) === 'empty'
+                }"
+              >
+              </i>
+            </ng-container>
+          </span>
+          <span class="score fw-bold text-warning">{{ item.rating }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
+<section class="leaderboard-section text-light py-5">
+  <h1 class="text-center fw-bold display-4 leaderboard-title my-5">
+    🏆 SERIES LEADERBOARD
+  </h1>
+
+  <div class="container">
+    <ul class="leaderboard-list list-unstyled">
+      <li
+        *ngFor="let item of topSeries; let i = index"
+        [routerLink]=" '/series/'+item.id "
+        class="leaderboard-item d-flex align-items-center justify-content-between shadow-lg rounded p-3 mb-3"
+      >
+        <!-- Rang -->
+        <span
+          class="rank fw-bold me-3"
+          [ngClass]="{
+            gold: i === 0,
+            silver: i === 1,
+            bronze: i === 2
+          }"
+        >
+          {{ i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "#" + (i + 1) }}
+        </span>
+
+        <!-- Image -->
+        <img [src]="item.image" class="film-img me-3" alt="{{ item.title }}" />
+
+        <!-- Nom -->
+        <span class="title flex-grow-1 fw-bold">{{ item.title }}</span>
+
+        <!-- Étoiles + Score -->
+        <div class="d-flex justify-content-between align-items-center stars-score">
+          <span class="stars d-flex gap-1">
+            <ng-container
+              *ngFor="let star of [].constructor(10); let i = index"
+            >
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-star-fill': getStarType(i, item.rating) === 'full',
+                  'bi-star-half': getStarType(i, item.rating) === 'half',
+                  'bi-star': getStarType(i, item.rating) === 'empty',
+                  'text-warning': getStarType(i, item.rating) !== 'empty',
+                  '': getStarType(i, item.rating) === 'empty'
+                }"
+              >
+              </i>
+            </ng-container>
+          </span>
+          <span class="score fw-bold text-warning">{{ item.rating }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
