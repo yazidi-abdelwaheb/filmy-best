@@ -8,7 +8,7 @@ import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-show',
-  imports: [RouterLink , StarRatingComponent , EpCardComponent , UpperCasePipe],
+  imports: [RouterLink, StarRatingComponent, EpCardComponent, UpperCasePipe],
   templateUrl: './show.component.html',
   styleUrl: './show.component.css',
 })
@@ -18,9 +18,11 @@ export class ShowComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    if(id){
-      this.fs.getOne(id).subscribe((data) => (this.serie = data));
+    if (id) {
+      this.fs.getOne(id).subscribe((data) => {
+        this.serie = data;
+        console.log(this.serie)
+      });
     }
-    
   }
 }

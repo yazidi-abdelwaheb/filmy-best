@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Film } from '../../models/film.model';
 import { NgFor, NgIf } from '@angular/common';
 import { DurationPipe } from '../../pipes/duration.pipe';
+import { Episode } from '../../models/serie.model';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { DurationPipe } from '../../pipes/duration.pipe';
   styleUrl: './video-card.component.css',
 })
 export class VideoCardComponent {
-  @Input() film: Film = new Film();
+  @Input() film!: Film | Episode;
 
   isPlaying = false;
   isMuted = false;

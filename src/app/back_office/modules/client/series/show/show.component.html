@@ -1,1 +1,62 @@
-<p>show works!</p>
+<section class="serie-details text-light">
+  <!-- Hero / Video Card -->
+  <app-video-card *ngIf="selectedEpisode" [film]="selectedEpisode"></app-video-card>
+
+  <header *ngIf="!selectedEpisode"  class="serie-hero position-relative mb-5">
+    <img
+      [src]="serie.image"
+      class="img-fluid w-100 serie-hero-img"
+      alt="serie {{ serie.title }} poster"
+    />
+    <div class="serie-hero-overlay"></div>
+    <div class="serie-hero-content container position-absolute bottom-0 start-0 px-5 py-1">
+      <h1 class="fw-bold display-3 text-gradient animate-title">
+        {{ serie.title | toCapitaleCase }}
+      </h1>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Rating -->
+    <span class="mb-3">
+      <app-star-rating [max]="10" [rating]="serie.rating"></app-star-rating>
+    </span>
+
+    <!-- Catégories -->
+    <div class="d-flex flex-wrap gap-3 my-4">
+      <span
+        *ngFor="let cat of serie.categories"
+        [routerLink]="'/categories/' + cat.id"
+        class="badge badge-premium bg-warning text-dark shadow-sm animate-badge"
+      >
+        <i class="bi bi-tag-fill me-1"></i> {{ cat.label | toCapitaleCase }}
+      </span>
+    </div>
+
+    <!-- Description -->
+    <p class="lead text-light mb-5 animate-fade text-break" [innerHTML]="serie.description"></p>
+
+    <!-- Episodes -->
+    <h3 class="fw-bold mb-4">Épisodes ({{ serie.episodeNbr }})</h3>
+    <div class="row g-4 mb-5">
+      <div *ngFor="let ep of serie.episodes" class="col-md-4">
+        <div class="episode-card shadow-lg rounded overflow-hidden cursor-pointer"
+             (click)="onEpisodeClick(ep)" style="cursor: pointer;">
+          <div class="episode-img-wrapper">
+            <img [src]="ep.image" class="w-100 episode-img" alt="Episode {{ ep.index }}">
+            <div class="episode-overlay">
+              <i class="bi bi-play-circle-fill fs-1"></i>
+            </div>
+          </div>
+          <div class="p-3">
+            <h5 class="fw-bold">
+              <i class="bi bi-collection-play text-danger me-3"></i>Episode {{ ep.index }}
+            </h5>
+            <p class="text-secondary mb-2">Durée : {{ ep.duration | duration }}</p>
+            <app-star-rating [max]="10" [rating]="ep.rating"></app-star-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

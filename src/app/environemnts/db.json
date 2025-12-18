@@ -279,19 +279,19 @@
           "image": "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABRn7Qo_GmZAmT5mA8SMGUt4cT1wZSsNzX8bUrd-EeVPJUlLxko-rW5MRukayCAYARXPBcIvRIEqfv9Nvzvjb1iTO8r1T_t0NGxCOYhSmvCNBm_81W_UeiZGG.jpg?r=a5e",
           "index": 1,
           "rating": 7.5,
-          "durarion": 45
+          "duration": 45
         },
         {
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZbTq28LTP8KuhK9SroUoyq3-rYiOETan1nQ&s",
           "index": 2,
           "rating": 8.1,
-          "durarion": 46
+          "duration": 46
         },
         {
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOooWJk10Lg-OIHkVvX24JRP1jVVkC8-5_0w&s",
           "index": 3,
           "rating": 8,
-          "durarion": 40
+          "duration": 40
         }
       ],
       "id": 1,
@@ -329,19 +329,19 @@
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRureuyluR22yJN-MdSTVlcR2MtZiUjHulew&s",
           "index": 1,
           "rating": 7.9,
-          "durarion": 45
+          "duration": 45
         },
         {
           "image": "https://i.ytimg.com/vi/hnpq8yQ7jcg/maxresdefault.jpg",
           "index": 2,
           "rating": 7,
-          "durarion": 46
+          "duration": 46
         },
         {
           "image": "https://theadultswimsquad.wordpress.com/wp-content/uploads/2016/05/screenshot0025.jpg",
           "index": 3,
           "rating": 8.6,
-          "durarion": 49
+          "duration": 49
         }
       ],
       "id": 4,
@@ -410,13 +410,13 @@
           "image": "https://upload.wikimedia.org/wikipedia/en/2/2a/1ststagenaruto.jpg",
           "index": 1,
           "rating": 8.1,
-          "durarion": 45
+          "duration": 45
         },
         {
           "image": "https://image.tmdb.org/t/p/original/yBHXns4g7gWcWuQfOzL4Jekj74e.jpg",
           "index": 2,
           "rating": 8.5,
-          "durarion": 49
+          "duration": 49
         }
       ],
       "id": 6
