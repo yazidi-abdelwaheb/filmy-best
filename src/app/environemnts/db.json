@@ -199,6 +199,60 @@
         "f845",
         "ee56"
       ]
+    },
+    {
+      "title": "Avatar 3",
+      "categoriesIds": [
+        "fe43",
+        "f845",
+        "14a4"
+      ],
+      "categories": [
+        {
+          "id": "fe43",
+          "label": "drama",
+          "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2020/02/best-drama-movies-feautred.jpg"
+        },
+        {
+          "id": "f845",
+          "label": "science fiction",
+          "image": "https://connect.geant.org/wp-content/uploads/2023/06/Science-Fiction.jpg"
+        },
+        {
+          "id": "14a4",
+          "label": "action",
+          "image": "https://media.gqmagazine.fr/photos/64be90e2102884bdbb5d33a9/16:9/w_1280,c_limit/FILMS_ACTION_A.jpg"
+        }
+      ],
+      "description": "Avec Avatar : De Feu et de Cendres, James Cameron ramène le public sur Pandora dans une nouvelle aventure immersive avec Jake Sully, marine devenu chef Na’vi, Neytiri, guerrière Na’vi et la famille Sully.\n\nLe film met en vedette Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang et bien d’autres. Il est réalisé par James Cameron, avec un scénario de James Cameron, Rick Jaffa et Amanda Silver. Le casting du long-métrage comprend également Oona Chaplin, Cliff Curtis, Britain Dalton, Trinity Bliss, Jack Champion, Bailey Bass et Kate Winslet.",
+      "image": "https://cdn.kulturegeek.fr/wp-content/uploads/2025/09/Avatar-3-De-Feu-et-de-Cendres-Affiche-Recadree-1024x618.jpg",
+      "rating": 7.4,
+      "duration": 170,
+      "id": "489_FBI"
+    },
+    {
+      "title": "Sonic 3",
+      "categoriesIds": [
+        "ee56",
+        "14a4"
+      ],
+      "categories": [
+        {
+          "id": "ee56",
+          "label": "Animation",
+          "image": "https://weirdsides.com/wp-content/uploads/2025/10/anime.png"
+        },
+        {
+          "id": "14a4",
+          "label": "action",
+          "image": "https://media.gqmagazine.fr/photos/64be90e2102884bdbb5d33a9/16:9/w_1280,c_limit/FILMS_ACTION_A.jpg"
+        }
+      ],
+      "description": "La bande-annonce montre Sonic, Shadow, Tails, Dr Robotnik, le professeur Gerald Robotnik et le jardin Chao. Le trailer débute là, dans le jardin Chao, mais ce n’est pas ce à quoi les fans de Sonic Adventure 2 pourraient s’attendre. Au lieu d’être un lieu de reproduction et un terrain de jeu pour les Chao, le jardin Chao de Sonic 3 le film est un restaurant pour enfants. Des enfants courent partout et un groupe composé de personnes déguisées en Chao se produit sur une scène. Deux enfants se moquent de Tails parce qu’il ressemble… à détective Pikachu.\n\nLe reste de la bande-annonce est bien plus centré sur Shadow, que l’on voit à différents moments patiner, affronter Sonic et, dans ce qui semble être des séquences de flash-back, rencontrer la jeune fille Maria. Nous voyons également plus longuement Dr Robotnik et son grand-père.",
+      "image": "https://cdn.kulturegeek.fr/wp-content/uploads/2024/08/Sonic-le-film-3-Shadow-1024x576.jpg",
+      "rating": 1,
+      "duration": 160,
+      "id": "qnBagH1"
     }
   ],
   "categories": [
@@ -270,7 +324,7 @@
           "image": "https://media.gqmagazine.fr/photos/64be90e2102884bdbb5d33a9/16:9/w_1280,c_limit/FILMS_ACTION_A.jpg"
         }
       ],
-      "description": "<p>One&nbsp;Piece&nbsp;is&nbsp;an&nbsp;anime&nbsp;series&nbsp;adapted&nbsp;from&nbsp;a&nbsp;homonymous&nbsp;manga&nbsp;created&nbsp;and&nbsp;illustrated&nbsp;by&nbsp;Eiichirō&nbsp;Oda.&nbsp;The&nbsp;series&nbsp;is&nbsp;suitable&nbsp;for&nbsp;Monkey&nbsp;D.&nbsp;Luffy&nbsp;adventures,&nbsp;a&nbsp;new&nbsp;garçon&nbsp;compagné&nbsp;of&nbsp;his&nbsp;fidget&nbsp;quip&nbsp;page&nbsp;named&nbsp;the&nbsp;“Paille&nbsp;quip&nbsp;page”.&nbsp;The&nbsp;story&nbsp;of&nbsp;Luffy&nbsp;is&nbsp;to&nbsp;save&nbsp;the&nbsp;prochain&nbsp;from&nbsp;the&nbsp;Pirates.&nbsp;When&nbsp;it&nbsp;arrives,&nbsp;taking&nbsp;advantage&nbsp;of&nbsp;the&nbsp;fact&nbsp;that&nbsp;many&nbsp;pirate&nbsp;pirates&nbsp;have&nbsp;supported&nbsp;it,&nbsp;they&nbsp;can&nbsp;enter&nbsp;it&nbsp;to&nbsp;discover&nbsp;“One&nbsp;Piece”,&nbsp;the&nbsp;fabuleux&nbsp;trésor&nbsp;que&nbsp;the&nbsp;legend&nbsp;Gol&nbsp;D.&nbsp;Roger&nbsp;has&nbsp;a&nbsp;cache&nbsp;of&nbsp;a&nbsp;large&nbsp;part&nbsp;in&nbsp;the&nbsp;vast&nbsp;land.&nbsp;Produced&nbsp;by&nbsp;Toei&nbsp;Animation&nbsp;and&nbsp;released&nbsp;by&nbsp;Eiichirō&nbsp;Oda,&nbsp;Munehisa&nbsp;Sakai&nbsp;and&nbsp;Hiroaki&nbsp;Miyamoto,&nbsp;the&nbsp;series&nbsp;was&nbsp;initially&nbsp;released&nbsp;on&nbsp;Japanese&nbsp;Fuji&nbsp;Television&nbsp;screens&nbsp;released&nbsp;on&nbsp;October&nbsp;20,&nbsp;1999.</p>",
+      "description": "One Piece is an anime series adapted from a homonymous manga created and illustrated by Eiichirō Oda. The series is suitable for Monkey D. Luffy adventures, a new garçon compagné of his fidget quip page named the “Paille quip page”. The story of Luffy is to save the prochain from the Pirates. When it arrives, taking advantage of the fact that many pirate pirates have supported it, they can enter it to discover “One Piece”, the fabuleux trésor que the legend Gol D. Roger has a cache of a large part in the vast land. Produced by Toei Animation and released by Eiichirō Oda, Munehisa Sakai and Hiroaki Miyamoto, the series was initially released on Japanese Fuji Television screens released on October 20, 1999.",
       "image": "https://upload.wikimedia.org/wikipedia/fr/3/34/One_Piece_%28ja%29_Logo.svg",
       "rating": 8.9,
       "episodeNbr": 1155,
@@ -320,7 +374,7 @@
           "image": "https://media.gqmagazine.fr/photos/64be90e2102884bdbb5d33a9/16:9/w_1280,c_limit/FILMS_ACTION_A.jpg"
         }
       ],
-      "description": "<p>Hunter&nbsp;×&nbsp;Hunter&nbsp;(pronounced&nbsp;&quot;hunter&nbsp;hunter&quot;)&nbsp;is&nbsp;a&nbsp;Japanese&nbsp;manga&nbsp;series&nbsp;written&nbsp;and&nbsp;illustrated&nbsp;by&nbsp;Yoshihiro&nbsp;Togashi.&nbsp;It&nbsp;has&nbsp;been&nbsp;serialized&nbsp;in&nbsp;Shueisha&#39;s&nbsp;shōnen&nbsp;manga&nbsp;magazine&nbsp;Weekly&nbsp;Shōnen&nbsp;Jump&nbsp;since&nbsp;March&nbsp;1998,&nbsp;although&nbsp;the&nbsp;manga&nbsp;has&nbsp;frequently&nbsp;gone&nbsp;on&nbsp;extended&nbsp;hiatuses&nbsp;since&nbsp;2006.&nbsp;Its&nbsp;chapters&nbsp;have&nbsp;been&nbsp;collected&nbsp;in&nbsp;38&nbsp;tankōbon&nbsp;volumes&nbsp;as&nbsp;of&nbsp;September&nbsp;2024.&nbsp;The&nbsp;story&nbsp;focuses&nbsp;on&nbsp;a&nbsp;young&nbsp;boy&nbsp;named&nbsp;Gon&nbsp;Freecss&nbsp;who&nbsp;discovers&nbsp;that&nbsp;his&nbsp;father,&nbsp;who&nbsp;left&nbsp;him&nbsp;at&nbsp;a&nbsp;young&nbsp;age,&nbsp;is&nbsp;actually&nbsp;a&nbsp;world-renowned&nbsp;Hunter,&nbsp;a&nbsp;licensed&nbsp;professional&nbsp;who&nbsp;specializes&nbsp;in&nbsp;fantastical&nbsp;pursuits&nbsp;such&nbsp;as&nbsp;locating&nbsp;rare&nbsp;or&nbsp;unidentified&nbsp;animal&nbsp;species,&nbsp;treasure&nbsp;hunting,&nbsp;surveying&nbsp;unexplored&nbsp;enclaves,&nbsp;or&nbsp;hunting&nbsp;down&nbsp;lawless&nbsp;individuals.&nbsp;Gon&nbsp;departs&nbsp;on&nbsp;a&nbsp;journey&nbsp;to&nbsp;become&nbsp;a&nbsp;Hunter&nbsp;and&nbsp;eventually&nbsp;find&nbsp;his&nbsp;father.&nbsp;Along&nbsp;the&nbsp;way,&nbsp;Gon&nbsp;meets&nbsp;various&nbsp;other&nbsp;Hunters&nbsp;and&nbsp;encounters&nbsp;the&nbsp;paranormal.</p>",
+      "description": "Hunter × Hunter (pronounced \"hunter hunter\") is a Japanese manga series written and illustrated by Yoshihiro Togashi. It has been serialized in Shueisha's shōnen manga magazine Weekly Shōnen Jump since March 1998, although the manga has frequently gone on extended hiatuses since 2006. Its chapters have been collected in 38 tankōbon volumes as of September 2024. The story focuses on a young boy named Gon Freecss who discovers that his father, who left him at a young age, is actually a world-renowned Hunter, a licensed professional who specializes in fantastical pursuits such as locating rare or unidentified animal species, treasure hunting, surveying unexplored enclaves, or hunting down lawless individuals. Gon departs on a journey to become a Hunter and eventually find his father. Along the way, Gon meets various other Hunters and encounters the paranormal.",
       "image": "https://aesthetic-posters.fr/cdn/shop/collections/posters-hunter-x-hunter.png?v=1721770795",
       "rating": 9,
       "episodeNbr": 256,
@@ -370,7 +424,7 @@
           "image": "https://image.jimcdn.com/app/cms/image/transf/none/path/s63ccf77ce0e97436/image/i711bf97c6ce2c6c8/version/1463219962/image.jpg"
         }
       ],
-      "description": "<p><span style=\"background-color: rgba(255, 255, 255, 0.1);\">une&nbsp;belle&nbsp;maison,&nbsp;un&nbsp;mari&nbsp;aimant,&nbsp;une&nbsp;vie&nbsp;paisible&nbsp;aux&nbsp;côtés&nbsp;de&nbsp;ses&nbsp;enfants.&nbsp;Mais&nbsp;du&nbsp;jour&nbsp;au&nbsp;lendemain,&nbsp;tout&nbsp;s’effondre.&nbsp;Son&nbsp;mari&nbsp;disparaît&nbsp;sans&nbsp;laisser&nbsp;de&nbsp;trace,&nbsp;la&nbsp;laissant&nbsp;ruinée,&nbsp;seule&nbsp;et&nbsp;désemparée.&nbsp;Obligée&nbsp;de&nbsp;tout&nbsp;recommencer,&nbsp;Deniz&nbsp;se&nbsp;bat&nbsp;pour&nbsp;sa&nbsp;famille…&nbsp;jusqu’à&nbsp;ce&nbsp;qu’elle&nbsp;croise&nbsp;la&nbsp;route&nbsp;de&nbsp;Mirat,&nbsp;un&nbsp;homme&nbsp;qui&nbsp;pourrait&nbsp;bien&nbsp;bouleverser&nbsp;son&nbsp;destin.&nbsp;💔&nbsp;Peut-on&nbsp;aimer&nbsp;à&nbsp;nouveau&nbsp;quand&nbsp;la&nbsp;vie&nbsp;nous&nbsp;a&nbsp;brisé&nbsp;le&nbsp;cœur&nbsp;?&nbsp;Entre&nbsp;secrets&nbsp;enfouis,&nbsp;douleurs&nbsp;du&nbsp;passé&nbsp;et&nbsp;espoirs&nbsp;d’un&nbsp;avenir&nbsp;meilleur,&nbsp;Deniz&nbsp;entame&nbsp;un&nbsp;long&nbsp;chemin&nbsp;vers&nbsp;la&nbsp;reconstruction…&nbsp;et&nbsp;peut-être&nbsp;vers&nbsp;l’amour.&nbsp;</span></p>",
+      "description": "une belle maison, un mari aimant, une vie paisible aux côtés de ses enfants. Mais du jour au lendemain, tout s’effondre. Son mari disparaît sans laisser de trace, la laissant ruinée, seule et désemparée. Obligée de tout recommencer, Deniz se bat pour sa famille… jusqu’à ce qu’elle croise la route de Mirat, un homme qui pourrait bien bouleverser son destin. 💔 Peut-on aimer à nouveau quand la vie nous a brisé le cœur ? Entre secrets enfouis, douleurs du passé et espoirs d’un avenir meilleur, Deniz entame un long chemin vers la reconstruction… et peut-être vers l’amour. ",
       "image": "https://i.ytimg.com/vi/FFlrtIWqsFE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCNEWgHOhcHmfu3A-lfThjsZOr4-w",
       "rating": 6.5,
       "episodeNbr": 19,
@@ -401,7 +455,7 @@
           "image": "https://image.jimcdn.com/app/cms/image/transf/none/path/s63ccf77ce0e97436/image/i711bf97c6ce2c6c8/version/1463219962/image.jpg"
         }
       ],
-      "description": "<p>Ce.&nbsp;Tout&nbsp;était&nbsp;pris&nbsp;plus&nbsp;au&nbsp;sérieux,&nbsp;tout&nbsp;le&nbsp;monde&nbsp;était&nbsp;plus&nbsp;mortel,&nbsp;et&nbsp;donc&nbsp;les&nbsp;enjeux&nbsp;étaient&nbsp;plus&nbsp;risqués&nbsp;et&nbsp;plus&nbsp;élevés.&nbsp;Des&nbsp;moments&nbsp;comme&nbsp;Lee&nbsp;contre&nbsp;Gaara&nbsp;ont&nbsp;été&nbsp;créés&nbsp;en&nbsp;raison&nbsp;du&nbsp;sérieux&nbsp;et&nbsp;de&nbsp;la&nbsp;crédibilité&nbsp;des&nbsp;non-protagonistes&nbsp;ou&nbsp;d&#39;Uchiha.&nbsp;En&nbsp;fait,&nbsp;je&nbsp;me&nbsp;souciais&nbsp;et&nbsp;respectais&nbsp;ces&nbsp;personnages,&nbsp;surtout&nbsp;après&nbsp;l&#39;arc&nbsp;de&nbsp;récupération&nbsp;de&nbsp;Sasuke&nbsp;où&nbsp;ces&nbsp;garçons&nbsp;sont&nbsp;devenus&nbsp;des&nbsp;hommes&nbsp;et&nbsp;ont&nbsp;mis&nbsp;leur&nbsp;vie&nbsp;en&nbsp;jeu&nbsp;comme&nbsp;ils&nbsp;l&#39;ont&nbsp;fait.</p><p>Shippuden&nbsp;a&nbsp;fait&nbsp;un&nbsp;très&nbsp;bon&nbsp;travail&nbsp;jusqu&#39;à&nbsp;la&nbsp;fin&nbsp;de&nbsp;l&#39;arc&nbsp;Pain.&nbsp;Nous&nbsp;aurions&nbsp;dû&nbsp;savoir&nbsp;qu’ils&nbsp;ne&nbsp;pouvaient&nbsp;pas&nbsp;faire&nbsp;mieux&nbsp;et…&nbsp;eh&nbsp;bien,&nbsp;ils&nbsp;ne&nbsp;l’ont&nbsp;pas&nbsp;fait.&nbsp;La&nbsp;guerre&nbsp;était&nbsp;si&nbsp;cruelle&nbsp;et&nbsp;je&nbsp;m’en&nbsp;fichais.</p><p></p>",
+      "description": "Ce. Tout était pris plus au sérieux, tout le monde était plus mortel, et donc les enjeux étaient plus risqués et plus élevés. Des moments comme Lee contre Gaara ont été créés en raison du sérieux et de la crédibilité des non-protagonistes ou d'Uchiha. En fait, je me souciais et respectais ces personnages, surtout après l'arc de récupération de Sasuke où ces garçons sont devenus des hommes et ont mis leur vie en jeu comme ils l'ont fait.\n\nShippuden a fait un très bon travail jusqu'à la fin de l'arc Pain. Nous aurions dû savoir qu’ils ne pouvaient pas faire mieux et… eh bien, ils ne l’ont pas fait. La guerre était si cruelle et je m’en fichais.",
       "image": "https://preview.redd.it/which-show-is-better-og-or-shippuden-v0-psseu93j62la1.jpg?width=640&crop=smart&auto=webp&s=d410946fa3048abb91a72d57cc50405293b56cbe",
       "rating": 8.5,
       "episodeNbr": 494,
@@ -420,6 +474,68 @@
         }
       ],
       "id": 6
+    },
+    {
+      "title": "Game of Thrones",
+      "categoriesIds": [
+        "fe43",
+        "55eb",
+        "14a4"
+      ],
+      "categories": [
+        {
+          "id": "fe43",
+          "label": "drama",
+          "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2020/02/best-drama-movies-feautred.jpg"
+        },
+        {
+          "id": "55eb",
+          "label": "Historical",
+          "image": "https://preview.redd.it/best-historic-period-drama-movie-v0-ssyio60phgje1.jpeg?width=1080&crop=smart&auto=webp&s=d39a64247e6340bdc6472ebf45ef107e9a815654"
+        },
+        {
+          "id": "14a4",
+          "label": "action",
+          "image": "https://media.gqmagazine.fr/photos/64be90e2102884bdbb5d33a9/16:9/w_1280,c_limit/FILMS_ACTION_A.jpg"
+        }
+      ],
+      "description": "Game of Thrones a acquis une fanbase internationale exceptionnellement vaste et active. La série a été plébiscitée par la majorité des critiques, bien que certains aient émis des réserves sur la forte quantité de violence et de sexe dans le récit. Elle a obtenu de nombreuses récompenses, dont un prix Hugo de la meilleure fiction dramatique et un Peabody Award, ainsi que dix nominations aux Primetime Emmy Awards — dont trois à celui de la meilleure série dramatique pour les trois premières saisons —, deux nominations aux Golden Globes. Au sein d'une distribution importante essentiellement composée d'acteurs britanniques, l'acteur américain Peter Dinklage a remporté l'Emmy Award, ainsi que le Golden Globe du meilleur acteur dans un second rôle pour son interprétation de Tyrion Lannister. L'acteur britannique Kit Harington a remporté le Young Hollywood Awards du meilleur acteur pour son interprétation de Jon Snow. L'actrice britannique Emilia Clarke a remporté le Gracie Allen Awards de la meilleure actrice dans une série dramatique pour son interprétation de Daenerys Targaryen. En 2013, la Writers Guild of America la nomme 40e des 101 séries les mieux écrites de l'histoire de la télévision. À ce jour, Game of Thrones est une des séries télévisées les plus téléchargées illégalement dans le monde. En 2015, la série entre dans le livre des records comme étant la série la plus diffusée dans le monde, avec 173 pays. Elle est aussi une des séries les plus chères de l'histoire, le budget de la saison 6 étant de 100 millions de dollars, soit 10 millions par épisode.",
+      "image": "https://akns-images.eonline.com/eol_images/Entire_Site/2019221/rs_600x600-190321113005-600-game-of-thrones-poster-ch-032119.jpg?fit=around%7C1080:1080&output-quality=90&crop=1080:1080;center,top",
+      "rating": 8.6,
+      "episodeNbr": 48,
+      "episodes": [],
+      "id": 7
+    },
+    {
+      "title": "ATTACK ON TITAN",
+      "categoriesIds": [
+        "ee56",
+        "14a4",
+        "f845"
+      ],
+      "categories": [
+        {
+          "id": "ee56",
+          "label": "Animation",
+          "image": "https://weirdsides.com/wp-content/uploads/2025/10/anime.png"
+        },
+        {
+          "id": "14a4",
+          "label": "action",
+          "image": "https://media.gqmagazine.fr/photos/64be90e2102884bdbb5d33a9/16:9/w_1280,c_limit/FILMS_ACTION_A.jpg"
+        },
+        {
+          "id": "f845",
+          "label": "science fiction",
+          "image": "https://connect.geant.org/wp-content/uploads/2023/06/Science-Fiction.jpg"
+        }
+      ],
+      "description": "L’histoire tourne autour du personnage d’Eren Jäger dans un monde où l’humanité vit entourée d’immenses murs pour se protéger de créatures gigantesques, les Titans. Le récit raconte le combat mené par l’humanité pour reconquérir son territoire, en éclaircissant les mystères liés à l’apparition des Titans, du monde extérieur et des évènements précédant la construction des murs.",
+      "image": "https://www.pro-bems.com/IMAGES/images_1/FIGFP3586/m/FIGFP3586_2.jpg",
+      "rating": 8.9,
+      "episodeNbr": 59,
+      "episodes": [],
+      "id": 8
     }
   ]
 }

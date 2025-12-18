@@ -6,12 +6,12 @@ import Category from '../../../../shared/models/category.model';
 import { SeriesService } from '../../../../shared/services/series.service';
 import { Episode, Serie } from '../../../../shared/models/serie.model';
 import { EpCardComponent } from '../../../../shared/components/ep-card/ep-card.component';
-import { QuillModule } from 'ngx-quill';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-add',
-  imports: [FormsModule, RouterLink, EpCardComponent , QuillModule],
+  imports: [FormsModule, RouterLink, EpCardComponent ],
   templateUrl: './add.component.html',
   styleUrl: './add.component.css',
 })
@@ -25,7 +25,8 @@ export class AddComponent {
   constructor(
     private fs: SeriesService,
     private router: Router,
-    private cs: CategoriesService
+    private cs: CategoriesService,
+    private toastr : ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class AddComponent {
     this.serie.categoriesIds = this.serie.categories.map(e=>e.id)
     this.serie.episodes.filter((e) => e && e.image && e.image.trim() !== '');
     this.fs.addOne(this.serie).subscribe(() => {
+      this.toastr.success(`Serie "${this.serie.title}" added successfully!`)
       this.router.navigate(['/admin/series']);
     });
   }

@@ -6,11 +6,6 @@ import { ClientComponent } from './back_office/modules/client/client.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        component : ClientComponent,
-        loadChildren : () => import('./back_office/modules/client/client.routes').then(m => m.clientRoutes),
-    },
-    {
         path: 'sign-in',
         component : LoginComponent,
     },
@@ -19,5 +14,10 @@ export const routes: Routes = [
         component : AdminComponent,
         loadChildren : () => import('./back_office/modules/admin/admin.routes').then(m => m.adminRoutes),
         canActivate:[adminGuard],
+    },
+    {
+        path: '',
+        component : ClientComponent,
+        loadChildren : () => import('./back_office/modules/client/client.routes').then(m => m.clientRoutes),
     },
 ];

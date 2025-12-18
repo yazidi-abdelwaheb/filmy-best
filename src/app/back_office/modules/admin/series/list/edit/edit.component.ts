@@ -8,11 +8,11 @@ import { SeriesService } from '../../../../../shared/services/series.service';
 import { CategoriesService } from '../../../../../shared/services/categories.service';
 import Category from '../../../../../shared/models/category.model';
 import { EpCardComponent } from '../../../../../shared/components/ep-card/ep-card.component';
-import { QuillModule } from 'ngx-quill';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit',
-  imports: [FormsModule, RouterLink, EpCardComponent, QuillModule],
+  imports: [FormsModule, RouterLink, EpCardComponent],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })
@@ -27,7 +27,8 @@ export class EditComponent implements OnInit {
     private fs: SeriesService,
     private router: Router,
     private cs: CategoriesService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private toastr : ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +49,7 @@ export class EditComponent implements OnInit {
     const id = this.actRoute.snapshot.params['id'];
     this.serie.episodes.filter((e) => e && e.image && e.image.trim() !== '');
     this.fs.updateOne(id, this.serie).subscribe(() => {
+      this.toastr.success(`Films "${this.serie.title}" updated successfully!`)
       this.router.navigate(['/admin/series']);
     });
   }

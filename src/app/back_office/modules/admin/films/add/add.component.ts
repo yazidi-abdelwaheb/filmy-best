@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import Category from '../../../../shared/models/category.model';
 import { CategoriesService } from '../../../../shared/services/categories.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add',
   imports: [FormsModule, RouterLink],
@@ -19,7 +20,8 @@ export class AddComponent implements OnInit {
   constructor(
     private fs: FilmsService,
     private router: Router,
-    private cs: CategoriesService
+    private cs: CategoriesService,
+    private toastr : ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class AddComponent implements OnInit {
   onSubmit() {
     this.film.categoriesIds = this.film.categories.map(e=>e.id)
     this.fs.addOne(this.film).subscribe(() => {
+      this.toastr.success(`Films "${this.film.title}" added successfully!`)
       this.router.navigate(['/admin/film']);
     });
   }

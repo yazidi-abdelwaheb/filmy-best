@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import Category from '../../../../shared/models/category.model';
 import { CategoriesService } from '../../../../shared/services/categories.service';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list',
@@ -24,7 +25,8 @@ export class ListComponent {
 
   constructor(
     private CategoryService: CategoriesService,
-    private route: Router
+    private route: Router,
+    
   ) {}
 
   ngOnInit(): void {

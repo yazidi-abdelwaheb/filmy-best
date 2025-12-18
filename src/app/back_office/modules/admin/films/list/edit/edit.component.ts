@@ -5,6 +5,7 @@ import { FilmsService } from '../../../../../shared/services/films.service';
 import { FormsModule } from '@angular/forms';
 import Category from '../../../../../shared/models/category.model';
 import { CategoriesService } from '../../../../../shared/services/categories.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit',
@@ -22,7 +23,8 @@ export class EditComponent {
     private fs: FilmsService,
     private cs: CategoriesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr : ToastrService
   ) {}
 
   ngOnInit() {
@@ -42,6 +44,7 @@ export class EditComponent {
   onSubmit() {
     this.film.categoriesIds = this.film.categories.map((e) => e.id);
     this.fs.updateOne(this.film.id, this.film).subscribe(() => {
+       this.toastr.success(`Films "${this.film.title}" updated successfully!`)
       this.router.navigate(['/admin/film']);
     });
   }
