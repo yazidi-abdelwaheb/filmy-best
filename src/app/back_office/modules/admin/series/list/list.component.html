@@ -39,14 +39,19 @@
               style="object-fit: cover"
             />
           </td>
-          <td class="fw-bold">{{ f.title }}</td>
+          <td class="fw-bold">{{ f.title | toCapitaleCase}}</td>
           <td>
             @for(c of f.categories; track c.id){
             <span class="badge bg-primary me-1">{{ c.label }}</span>
             }
           </td>
           <td>{{ f.episodeNbr  }}</td>
-          <td><app-star-rating [rating]="f.rating"></app-star-rating></td>
+          <td>
+            <div class="d-flex align-items-center justify-content-start gap-2">
+              <i class="bi bi-star-fill text-warning fs-5"></i>
+              <span class="fw-bold">{{ f.rating }}/10</span>
+            </div>
+          </td>
           <td>
             <div class="btn-group" role="group">
               <button
@@ -65,7 +70,7 @@
               </button>
               <button
                 class="btn btn-sm btn-outline-danger"
-                (click)="onDelete(f.id)"
+                (click)="onDelete(f.id,f.title)"
                 title="Delete"
               >
                 <i class="bi bi-trash"></i>
@@ -92,4 +97,5 @@
     >
     </app-pagination>
   </div>
+  <app-confirm/>
 </div>

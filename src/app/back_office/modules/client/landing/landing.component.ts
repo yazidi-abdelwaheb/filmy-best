@@ -117,7 +117,7 @@ export class LandingComponent implements OnInit , AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.fs.list(1, 5).subscribe((data) => {
+    this.fs.list(1, 5,undefined,undefined,'rating','desc').subscribe((data) => {
       this.films = data;
     });
 
@@ -125,7 +125,7 @@ export class LandingComponent implements OnInit , AfterViewInit {
       this.ctagories = data;
     });
 
-    this.ss.list(1, 5).subscribe((data) => {
+    this.ss.list(1, 5,undefined,undefined,'rating','desc').subscribe((data) => {
       this.series = data;
     });
   }

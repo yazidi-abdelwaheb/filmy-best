@@ -1,1 +1,19 @@
-<p>confirm works!</p>
+<div class="modal-backdrop" *ngIf="visible" [class.show]="visible"></div>
+
+<div class="modal fade" [class.show]="visible" [style.display]="visible ? 'block' : 'none'">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm {{ titel }}</h5>
+        <button type="button" class="btn-close" (click)="onReject()"></button>
+      </div>
+      <div class="modal-body">
+        <p [innerHTML]="msg"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="onReject()">Close</button>
+        <button class="btn btn-success" (click)="onAccept()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

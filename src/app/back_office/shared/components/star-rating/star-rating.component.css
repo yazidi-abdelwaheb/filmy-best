@@ -1,1 +1,28 @@
 
+/* Container */
+.episode-rating {
+  max-width: fit-content;
+}
+
+/* Stars wrapper */
+.stars-wrapper i {
+  font-size: 15px;
+  margin-right: 4px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+/* Glow effect for active stars */
+.glow-star {
+  text-shadow: 0 0 6px rgba(255, 193, 7, 0.8);
+}
+
+.stars-wrapper i:hover {
+  transform: scale(1.2);
+}
+
+/* Gradient text for rating number */
+.text-gradient {
+  background: linear-gradient(90deg, #00cfff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

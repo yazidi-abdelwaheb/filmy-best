@@ -5,7 +5,7 @@ import { FilmsService } from '../../../../../shared/services/films.service';
 import { FormsModule } from '@angular/forms';
 import { CategoriesService } from '../../../../../shared/services/categories.service';
 import Category from '../../../../../shared/models/category.model';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-edit',
@@ -20,7 +20,7 @@ export class EditComponent {
     private categoryService: CategoriesService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr : ToastrService
+    private toastr : ToastService
   ) {}
 
   onSubmit() {

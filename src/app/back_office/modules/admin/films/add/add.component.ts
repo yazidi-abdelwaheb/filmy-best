@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import Category from '../../../../shared/models/category.model';
 import { CategoriesService } from '../../../../shared/services/categories.service';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../../shared/services/toast.service';
 @Component({
   selector: 'app-add',
   imports: [FormsModule, RouterLink],
@@ -21,7 +21,7 @@ export class AddComponent implements OnInit {
     private fs: FilmsService,
     private router: Router,
     private cs: CategoriesService,
-    private toastr : ToastrService
+    private toastr : ToastService
   ) {}
 
   ngOnInit(): void {

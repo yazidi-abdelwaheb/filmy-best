@@ -6,6 +6,7 @@ import { Serie } from '../../../shared/models/serie.model';
 import { FilmsService } from '../../../shared/services/films.service';
 import { SeriesService } from '../../../shared/services/series.service';
 import { RouterLink } from '@angular/router';
+import { StarRatingComponent } from '../../../shared/components/star-rating/star-rating.component';
 
 interface Item {
   id: string;
@@ -16,7 +17,7 @@ interface Item {
 }
 @Component({
   selector: 'app-ranking',
-  imports: [NgFor, FormsModule, NgClass , RouterLink],
+  imports: [NgFor, FormsModule, NgClass , RouterLink , StarRatingComponent],
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.css',
 })

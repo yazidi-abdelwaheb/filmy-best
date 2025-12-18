@@ -1,58 +1,116 @@
 <section class="serie-details text-light">
   <!-- Hero / Video Card -->
-  <app-video-card *ngIf="selectedEpisode" [film]="selectedEpisode"></app-video-card>
 
-  <header *ngIf="!selectedEpisode"  class="serie-hero position-relative mb-5">
+  @if(selectedEpisode){
+  <app-video-card [film]="selectedEpisode"></app-video-card>
+
+  <div class="episode-detail-card shadow-lg rounded-3 p-4 mt-3">
+    <h2 class="fw-bold text-gradient mb-3">
+      {{ serie.title }} — Episode {{ selectedEpisode.index }}
+    </h2>
+
+    <div class="d-flex align-items-center mb-2">
+      <i class="bi bi-clock-fill text-info me-2"></i>
+      <span class="fw-semibold">Duration :</span>
+      <span class="ms-2">{{ selectedEpisode.duration | duration }}</span>
+    </div>
+
+    <div class="d-flex align-items-center mb-2">
+      <i class="bi bi-star-fill text-warning me-2"></i>
+      <span class="fw-semibold me-3">Rating : </span>
+      <app-star-rating [max]="10" [rating]="selectedEpisode.rating" />
+    </div>
+  </div>
+  } @else {
+  <header class="serie-hero position-relative mb-5">
     <img
       [src]="serie.image"
       class="img-fluid w-100 serie-hero-img"
       alt="serie {{ serie.title }} poster"
     />
     <div class="serie-hero-overlay"></div>
-    <div class="serie-hero-content container position-absolute bottom-0 start-0 px-5 py-1">
+    <div
+      class="serie-hero-content container position-absolute bottom-0 start-0 px-5 py-1"
+    >
       <h1 class="fw-bold display-3 text-gradient animate-title">
         {{ serie.title | toCapitaleCase }}
       </h1>
     </div>
   </header>
+  }
 
-  <div class="container">
-    <!-- Rating -->
-    <span class="mb-3">
-      <app-star-rating [max]="10" [rating]="serie.rating"></app-star-rating>
-    </span>
+  <div class="container mt-5">
+    <div
+      class="episode-card d-flex align-items-center shadow-lg p-4 rounded-4 position-relative overflow-hidden"
+    >
+      <div class="episode-thumb me-4">
+        <img
+          [src]="serie.image"
+          width="110"
+          height="110"
+          class="rounded-circle border border-4 border-gradient"
+          alt="Poster {{ serie.title }}"
+        />
+      </div>
 
-    <!-- Catégories -->
+      <div class="episode-info">
+        <h3 class="fw-bold text-gradient mb-2">
+          {{ serie.title | toCapitaleCase }}
+        </h3>
+
+        <div class="mb-2">
+          <app-star-rating [max]="10" [rating]="serie.rating"></app-star-rating>
+        </div>
+
+        <span class="badge badge-premium  bg-dark px-3 py-2 rounded-pill shadow-sm">
+         Episodes : {{ serie.episodeNbr }}
+        </span>
+      </div>
+    </div>
+
     <div class="d-flex flex-wrap gap-3 my-4">
       <span
         *ngFor="let cat of serie.categories"
         [routerLink]="'/categories/' + cat.id"
+        style="cursor: pointer;"
         class="badge badge-premium bg-warning text-dark shadow-sm animate-badge"
       >
         <i class="bi bi-tag-fill me-1"></i> {{ cat.label | toCapitaleCase }}
       </span>
     </div>
 
-    <!-- Description -->
-    <p class="lead text-light mb-5 animate-fade text-break" [innerHTML]="serie.description"></p>
+    <p
+      class="lead text-light mb-5 animate-fade text-break"
+      [innerHTML]="serie.description"
+    ></p>
 
     <!-- Episodes -->
     <h3 class="fw-bold mb-4">Épisodes ({{ serie.episodeNbr }})</h3>
     <div class="row g-4 mb-5">
       <div *ngFor="let ep of serie.episodes" class="col-md-4">
-        <div class="episode-card shadow-lg rounded overflow-hidden cursor-pointer"
-             (click)="onEpisodeClick(ep)" style="cursor: pointer;">
+        <div
+          class="episode-card shadow-lg rounded overflow-hidden cursor-pointer"
+          (click)="onEpisodeClick(ep)"
+          style="cursor: pointer"
+        >
           <div class="episode-img-wrapper">
-            <img [src]="ep.image" class="w-100 episode-img" alt="Episode {{ ep.index }}">
+            <img
+              [src]="ep.image"
+              class="w-100 episode-img"
+              alt="Episode {{ ep.index }}"
+            />
             <div class="episode-overlay">
               <i class="bi bi-play-circle-fill fs-1"></i>
             </div>
           </div>
           <div class="p-3">
             <h5 class="fw-bold">
-              <i class="bi bi-collection-play text-danger me-3"></i>Episode {{ ep.index }}
+              <i class="bi bi-collection-play text-danger me-3"></i>Episode
+              {{ ep.index }}
             </h5>
-            <p class="text-secondary mb-2">Durée : {{ ep.duration | duration }}</p>
+            <p class="text-secondary mb-2">
+              Durée : {{ ep.duration | duration }}
+            </p>
             <app-star-rating [max]="10" [rating]="ep.rating"></app-star-rating>
           </div>
         </div>

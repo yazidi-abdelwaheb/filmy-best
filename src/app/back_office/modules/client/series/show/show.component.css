@@ -19,7 +19,7 @@
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #ff4b2b, #ff416c);
+  background: linear-gradient(90deg, #ff4b2b, #e50914);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -61,4 +61,33 @@
 
 .episode-img-wrapper:hover .episode-overlay {
   opacity: 1;
+}
+
+.episode-card {
+  background: #1e1e1e;
+  border-left: 6px solid #e50914;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.episode-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+}
+
+/* Gradient border pour l'image */
+.border-gradient {
+  border-image: linear-gradient(135deg, #ff416c, #e50914) 1;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(90deg, #ff416c, #e50914);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Badge Episodes */
+.badge {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }

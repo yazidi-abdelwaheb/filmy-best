@@ -6,7 +6,7 @@ import Category from '../../../../shared/models/category.model';
 import { SeriesService } from '../../../../shared/services/series.service';
 import { Episode, Serie } from '../../../../shared/models/serie.model';
 import { EpCardComponent } from '../../../../shared/components/ep-card/ep-card.component';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../../shared/services/toast.service';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class AddComponent {
     private fs: SeriesService,
     private router: Router,
     private cs: CategoriesService,
-    private toastr : ToastrService
+    private toastr : ToastService
   ) {}
 
   ngOnInit(): void {

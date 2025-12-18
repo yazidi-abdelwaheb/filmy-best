@@ -5,7 +5,7 @@ import { FilmsService } from '../../../../../shared/services/films.service';
 import { FormsModule } from '@angular/forms';
 import Category from '../../../../../shared/models/category.model';
 import { CategoriesService } from '../../../../../shared/services/categories.service';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-edit',
@@ -24,7 +24,7 @@ export class EditComponent {
     private cs: CategoriesService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr : ToastrService
+    private toastr : ToastService
   ) {}
 
   ngOnInit() {

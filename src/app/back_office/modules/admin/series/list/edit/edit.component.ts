@@ -8,7 +8,7 @@ import { SeriesService } from '../../../../../shared/services/series.service';
 import { CategoriesService } from '../../../../../shared/services/categories.service';
 import Category from '../../../../../shared/models/category.model';
 import { EpCardComponent } from '../../../../../shared/components/ep-card/ep-card.component';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-edit',
@@ -28,7 +28,7 @@ export class EditComponent implements OnInit {
     private router: Router,
     private cs: CategoriesService,
     private actRoute: ActivatedRoute,
-    private toastr : ToastrService
+    private toastr : ToastService
   ) {}
 
   ngOnInit(): void {
