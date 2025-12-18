@@ -7,6 +7,7 @@ import { DurationPipe } from '../../../../shared/pipes/duration.pipe';
 import { NgFor, NgIf } from '@angular/common';
 import { StarRatingComponent } from '../../../../shared/components/star-rating/star-rating.component';
 import { VideoCardComponent } from '../../../../shared/components/video-card/video-card.component';
+import { NotFoundService } from '../../../../shared/services/not-found.service';
 
 @Component({
   selector: 'app-show',
@@ -27,19 +28,31 @@ export class ShowComponent implements OnInit {
   id!: string;
   selectedEpisode: Episode | null = null;
 
-  constructor(private ss: SeriesService, private actRoute: ActivatedRoute) {}
+  constructor(
+    private ss: SeriesService,
+    private actRoute: ActivatedRoute,
+    private _404Service: NotFoundService
+  ) {}
 
   ngOnInit(): void {
     this.id = this.actRoute.snapshot.params['id'];
-    this.ss.getOne(this.id).subscribe((data) => {
-      this.serie = data;
+
+    this.ss.getOne(this.id).subscribe({
+      next: (data) => {
+        this.serie = data;
+      },
+      error: (e) => {
+        // Vérifie le code HTTP
+        if (e.status === 404) {
+          this._404Service.set(true);
+        }
+      },
     });
   }
 
   onEpisodeClick(ep: Episode) {
     this.selectedEpisode = ep;
 
-  
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

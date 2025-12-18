@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchZoneComponent } from '../../../../shared/components/search-zone/search-zone.component';
 import Category from '../../../../shared/models/category.model';
 import { CategoriesService } from '../../../../shared/services/categories.service';
+import { NotFoundService } from '../../../../shared/services/not-found.service';
 
 @Component({
   selector: 'app-show',
@@ -23,7 +24,7 @@ import { CategoriesService } from '../../../../shared/services/categories.servic
   styleUrl: './show.component.css',
 })
 export class ShowComponent implements OnInit {
-  category !:Category
+  category!: Category;
   films: Film[] = [];
   series: Serie[] = [];
   filmsPage: number = 1;
@@ -36,9 +37,10 @@ export class ShowComponent implements OnInit {
   constructor(
     private fs: FilmsService,
     private ss: SeriesService,
-    private cs:CategoriesService,
+    private cs: CategoriesService,
     private actRoute: ActivatedRoute,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _404Service: NotFoundService
   ) {}
 
   loadFilms(mode?: 'search') {
@@ -85,7 +87,17 @@ export class ShowComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.actRoute.snapshot.params['id'];
 
-    this.cs.getOne(this.id).subscribe(data=>{this.category=data});
+    this.cs.getOne(this.id).subscribe({
+      next: (data) => {
+        this.category = data;
+      },
+      error: (e) => {
+        // Vérifie le code HTTP
+        if (e.status === 404) {
+          this._404Service.set(true);
+        }
+      },
+    });
 
     this.loadFilms();
     this.loadSeries();
