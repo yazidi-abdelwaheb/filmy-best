@@ -1,6 +1,6 @@
 const environemnt = {
   prodaction: false,
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://filmy-best-server.onrender.com/',
 };
 
 export default environemnt;
