@@ -1,0 +1,1 @@
+import{j as e,x as i}from"./chunk-KSJISPJ2.js";var r=class t{_404=i(!1);constructor(){}get(){return this._404()}set(o){this._404.set(o)}toggle(){this._404.set(!this._404())}static \u0275fac=function(a){return new(a||t)};static \u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"})};export{r as a};

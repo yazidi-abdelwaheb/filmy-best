@@ -1,0 +1,1 @@
+import{M as n}from"./chunk-KSJISPJ2.js";var a=class r{transform(e,...t){return e?e.toLowerCase().split(" ").map(i=>i.charAt(0).toUpperCase()+i.slice(1)).join(" "):""}static \u0275fac=function(t){return new(t||r)};static \u0275pipe=n({name:"toCapitaleCase",type:r,pure:!0})};export{a};
