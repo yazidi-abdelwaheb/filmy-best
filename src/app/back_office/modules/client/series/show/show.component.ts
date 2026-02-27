@@ -18,7 +18,6 @@ import { NotFoundService } from '../../../../shared/services/not-found.service';
     StarRatingComponent,
     RouterLink,
     VideoCardComponent,
-    NgIf,
   ],
   templateUrl: './show.component.html',
   styleUrl: './show.component.css',
